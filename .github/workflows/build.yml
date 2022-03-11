@@ -70,14 +70,8 @@ jobs:
         run: git submodule update --init --recursive
 
       - name: Sync Third Party
-        run:  |
-              if [ "$RUNNER_OS" == "Windows" ]; then
-                ./ext/sync-shaderc.cmd
-              else
-                ./ext/sync-shaderc.sh
-              fi
-        shell: bash
-
+        run: python ./utils/git-sync-deps
+        
       - name: Build ${{ matrix.build_target }} Native Library
         run:  |
               if [ "$RUNNER_OS" == "Windows" ]; then
