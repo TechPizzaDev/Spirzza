@@ -6,7 +6,7 @@ on:
 jobs:
   native_builds:
     runs-on: ${{ matrix.os }}
-    name: ${{ matrix.build_target }}
+    name: ${{ matrix.build_target }} build
     
     strategy:
       fail-fast: false
@@ -82,11 +82,11 @@ jobs:
 
         run:  |
               if [ "$RUNNER_OS" == "Windows" ]; then
-                ./build-native.cmd $MODULE_ARGS_1 --cmake-args "$MODULE_CMAKE_ARGS_1"
-                ./build-native.cmd $MODULE_ARGS_2 --cmake-args "$MODULE_CMAKE_ARGS_2"
+                ./build-native.cmd ${{ matrix.spirv_cross_args }} $MODULE_ARGS_1 --cmake-args "$MODULE_CMAKE_ARGS_1"
+                ./build-native.cmd ${{ matrix.shaderc_args }} $MODULE_ARGS_2 --cmake-args "$MODULE_CMAKE_ARGS_2"
               else
-                ./build-native.sh $MODULE_ARGS_1 --cmake-args "$MODULE_CMAKE_ARGS_1"
-                ./build-native.sh $MODULE_ARGS_2 --cmake-args "$MODULE_CMAKE_ARGS_2"
+                ./build-native.sh ${{ matrix.spirv_cross_args }} $MODULE_ARGS_1 --cmake-args "$MODULE_CMAKE_ARGS_1"
+                ./build-native.sh ${{ matrix.shaderc_args }} $MODULE_ARGS_2 --cmake-args "$MODULE_CMAKE_ARGS_2"
               fi
         shell: bash
       

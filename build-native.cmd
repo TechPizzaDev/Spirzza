@@ -1,5 +1,5 @@
 @setlocal
-@echo on
+@echo off
 
 set _CMAKE_BUILD_TYPE=Debug
 set _BUILD_ARCH=x64
