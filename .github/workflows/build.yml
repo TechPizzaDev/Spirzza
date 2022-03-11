@@ -8,8 +8,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     name: Native Build - ${{ matrix.build_target }}
     env:
-      MODULE_ARGS_1: --submodule SPIRV-Cross --build-type Release --cmake-args "-DSPIRV_CROSS_STATIC=OFF -DSPIRV_CROSS_SHARED=ON -DSPIRV_CROSS_CLI=OFF" 
-      MODULE_ARGS_2: --submodule shaderc     --build-type Release --cmake-args "-DENABLE_HLSL=ON -DENABLE_OPT=ON -DENABLE_GLSLANG_BINARIES=OFF -DSPIRV_SKIP_EXECUTABLES=ON -DSHADERC_SKIP_TESTS=ON -DSHADERC_SKIP_EXAMPLES=ON"
+      MODULE_ARGS_1: --submodule SPIRV-Cross --build-type Release --cmake-args '-DSPIRV_CROSS_STATIC=OFF -DSPIRV_CROSS_SHARED=ON -DSPIRV_CROSS_CLI=OFF'
+      MODULE_ARGS_2: --submodule shaderc     --build-type Release --cmake-args '-DENABLE_HLSL=ON -DENABLE_OPT=ON -DENABLE_GLSLANG_BINARIES=OFF -DSPIRV_SKIP_EXECUTABLES=ON -DSHADERC_SKIP_TESTS=ON -DSHADERC_SKIP_EXAMPLES=ON'
   
     strategy:
       fail-fast: false
@@ -31,20 +31,20 @@ jobs:
           - os: windows-latest
             build_target: android-arm64-v8a
             artifact_name: build\android-arm64-v8a\libveldrid-spirv.so
-            spirv_cross_args: $MODULE_ARGS_1 --android-abi arm64-v8a --artifact-name build\\android-arm64-v8a\\libveldrid-spirv.so --android-ndk "%ANDROID_NDK_HOME%" 
-            shaderc_args:     $MODULE_ARGS_2 --android-abi arm64-v8a --artifact-name build\\android-arm64-v8a\\libveldrid-spirv.so --android-ndk "%ANDROID_NDK_HOME%" 
+            spirv_cross_args: $MODULE_ARGS_1 --android-abi arm64-v8a --artifact-name build\\android-arm64-v8a\\libveldrid-spirv.so --android-ndk '%ANDROID_NDK_HOME%' 
+            shaderc_args:     $MODULE_ARGS_2 --android-abi arm64-v8a --artifact-name build\\android-arm64-v8a\\libveldrid-spirv.so --android-ndk '%ANDROID_NDK_HOME%' 
             
           - os: windows-latest 
             build_target: android-armeabi-v7a
             artifact_name: build\android-armeabi-v7a\libveldrid-spirv.so
-            spirv_cross_args: $MODULE_ARGS_1 --android-abi armeabi-v7a --artifact-name build\\android-armeabi-v7a\\libveldrid-spirv.so --android-ndk "%ANDROID_NDK_HOME%" 
-            shaderc_args:     $MODULE_ARGS_2 --android-abi armeabi-v7a --artifact-name build\\android-armeabi-v7a\\libveldrid-spirv.so --android-ndk "%ANDROID_NDK_HOME%"
+            spirv_cross_args: $MODULE_ARGS_1 --android-abi armeabi-v7a --artifact-name build\\android-armeabi-v7a\\libveldrid-spirv.so --android-ndk '%ANDROID_NDK_HOME%' 
+            shaderc_args:     $MODULE_ARGS_2 --android-abi armeabi-v7a --artifact-name build\\android-armeabi-v7a\\libveldrid-spirv.so --android-ndk '%ANDROID_NDK_HOME%'
             
           - os: windows-latest
             build_target: android-x86_64
             artifact_name: build\android-x86_64\libveldrid-spirv.so
-            spirv_cross_args: $MODULE_ARGS_1 --android-abi x86_64 --artifact-name build\\android-x86_64\\libveldrid-spirv.so --android-ndk "%ANDROID_NDK_HOME%" 
-            shaderc_args:     $MODULE_ARGS_2 --android-abi x86_64 --artifact-name build\\android-x86_64\\libveldrid-spirv.so --android-ndk "%ANDROID_NDK_HOME%" 
+            spirv_cross_args: $MODULE_ARGS_1 --android-abi x86_64 --artifact-name build\\android-x86_64\\libveldrid-spirv.so --android-ndk '%ANDROID_NDK_HOME%' 
+            shaderc_args:     $MODULE_ARGS_2 --android-abi x86_64 --artifact-name build\\android-x86_64\\libveldrid-spirv.so --android-ndk '%ANDROID_NDK_HOME%' 
             
           - os: ubuntu-latest
             build_target: linux-x64
