@@ -6,7 +6,7 @@ on:
 jobs:
   native_builds:
     runs-on: ${{ matrix.os }}
-    name: Native Build - ${{ matrix.build_target }}
+    name: ${{ matrix.build_target }}
     
     strategy:
       fail-fast: false
@@ -102,7 +102,7 @@ jobs:
           path: ${{ matrix.includes_directory }}
           if-no-files-found: error
 
-      - name: Upload ${{ matrix.build_target }} Native Library
+      - name: Upload native library artifacts
         uses: actions/upload-artifact@v2
         with:
           name: ${{ matrix.build_target }}
