@@ -48,20 +48,20 @@ jobs:
           - os: ubuntu-latest
             build_target: linux-x64
             artifact_name: build/Release/libveldrid-spirv.so
-            spirv_cross_args: $MODULE_ARGS_1 --artifact-name
-            shaderc_args:     $MODULE_ARGS_2 --artifact-name
+            spirv_cross_args: $MODULE_ARGS_1 --artifact-name tmp
+            shaderc_args:     $MODULE_ARGS_2 --artifact-name tmp
             
           - os: macos-latest
             build_target: osx-universal
             artifact_name: build/Release/libveldrid-spirv.dylib
-            spirv_cross_args: $MODULE_ARGS_1 --osx-archs 'arm64;x86_64' --artifact-name
-            shaderc_args:     $MODULE_ARGS_2 --osx-archs 'arm64;x86_64' --artifact-name
+            spirv_cross_args: $MODULE_ARGS_1 --osx-archs 'arm64;x86_64' --artifact-name tmp
+            shaderc_args:     $MODULE_ARGS_2 --osx-archs 'arm64;x86_64' --artifact-name tmp
             
           - os: macos-latest
             build_target: ios
             artifact_name: build/ios-Release/Release-iphoneos/libveldrid-spirv-combined.a
-            spirv_cross_args: $MODULE_ARGS_1 ios --artifact-name
-            shaderc_args:     $MODULE_ARGS_2 ios --artifact-name
+            spirv_cross_args: $MODULE_ARGS_1 ios --artifact-name tmp 
+            shaderc_args:     $MODULE_ARGS_2 ios --artifact-name tmp
 
     steps:
       - uses: actions/checkout@v2

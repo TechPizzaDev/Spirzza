@@ -22,7 +22,7 @@ while :; do
             shift
             ;;
 		--cmake-args)
-            _CMakeArgs=$2
+            _CMakeArgs=$(echo $2 | tr -d \")
             shift
             ;;
 		--submodule)
