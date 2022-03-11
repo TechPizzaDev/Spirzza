@@ -94,7 +94,7 @@ jobs:
         shell: bash
       
       - name: Upload includes
-        if: ${{ matrix.includes_directory != "" }}
+        if: ${{ matrix.includes_directory != '' }}
         uses: actions/upload-artifact@v2
         with:
           name: includes
