@@ -61,13 +61,6 @@ fi
 
 mkdir -p $_OutputPath
 pushd $_OutputPath
-
-pwd
-echo ../../submodules/$_Submodule
-echo -DCMAKE_BUILD_TYPE=$_CMakeBuildType 
-echo $_CMakeArgs
-echo "Starting cmake"
-
 cmake ../../submodules/$_Submodule -DCMAKE_BUILD_TYPE=$_CMakeBuildType $_CMakeArgs $_CMakeGenerator $_CMakeToolchain $_CMakePlatform $_CMakeEnableBitcode -DPYTHON_EXECUTABLE=$_PythonExePath -DCMAKE_OSX_ARCHITECTURES="$_CMakeOsxArchitectures"
 cmake --build . --config $_CMakeBuildType
 popd
