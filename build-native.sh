@@ -2,6 +2,7 @@
 
 scriptPath="$( cd "$(dirname "$0")" ; pwd -P )"
 _CMakeBuildType=Debug
+_CMakeArgs=
 _CMakeToolchain=
 _CMakeIOSPlatform=
 _CMakeEnableBitcode=
@@ -22,7 +23,7 @@ while :; do
             shift
             ;;
 		--cmake-args)
-            _CMakeArgs=$(echo $2 | tr -d \")
+            _CMakeArgs=$2
             shift
             ;;
 		--submodule)

@@ -7,10 +7,7 @@ jobs:
   native_builds:
     runs-on: ${{ matrix.os }}
     name: Native Build - ${{ matrix.build_target }}
-    env:
-      MODULE_ARGS_1: --submodule SPIRV-Cross --build-type Release --cmake-args '-DSPIRV_CROSS_STATIC=OFF -DSPIRV_CROSS_SHARED=ON -DSPIRV_CROSS_CLI=OFF'
-      MODULE_ARGS_2: --submodule shaderc     --build-type Release --cmake-args '-DENABLE_HLSL=ON -DENABLE_OPT=ON -DENABLE_GLSLANG_BINARIES=OFF -DSPIRV_SKIP_EXECUTABLES=ON -DSHADERC_SKIP_TESTS=ON -DSHADERC_SKIP_EXAMPLES=ON'
-  
+    
     strategy:
       fail-fast: false
       matrix:
@@ -18,7 +15,7 @@ jobs:
           - os: windows-latest
             build_target: win-x64
             artifact_name: build\win-x64\libveldrid-spirv.dll
-            includes_directory: ""
+            includes_directory: tmp
             spirv_cross_args: $MODULE_ARGS_1 win-x64 --artifact-name build\\win-x64\\libveldrid-spirv.dll
             shaderc_args:     $MODULE_ARGS_2 win-x64 --artifact-name build\\win-x64\\libveldrid-spirv.dll
             
@@ -75,7 +72,11 @@ jobs:
         run: ./utils/git-sync-deps
         shell: bash
         
-      - name: Build ${{ matrix.build_target }} Native Library
+      - name: Build native libraries
+        env:
+          MODULE_ARGS_1: --submodule SPIRV-Cross --build-type Release --cmake-args '-DSPIRV_CROSS_STATIC=OFF -DSPIRV_CROSS_SHARED=ON -DSPIRV_CROSS_CLI=OFF'
+          MODULE_ARGS_2: --submodule shaderc     --build-type Release --cmake-args '-DENABLE_HLSL=ON -DENABLE_OPT=ON -DENABLE_GLSLANG_BINARIES=OFF -DSPIRV_SKIP_EXECUTABLES=ON -DSHADERC_SKIP_TESTS=ON -DSHADERC_SKIP_EXAMPLES=ON'
+  
         run:  |
               if [ "$RUNNER_OS" == "Windows" ]; then
                 ./build-native.cmd ${{ matrix.spirv_cross_args }}
