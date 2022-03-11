@@ -1,0 +1,214 @@
+name: CI
+on:
+  create: # when tags are created
+  workflow_dispatch: # clickable button in CI manager
+
+env:
+  _BUILD_TYPE: Release
+  _MODULE_1: --submodule SPIRV-Cross --build-type ${{ env._BUILD_TYPE }} --cmake-args "-DSPIRV_CROSS_STATIC=OFF -DSPIRV_CROSS_SHARED=ON -DSPIRV_CROSS_CLI=OFF" 
+  _MODULE_2: --submodule shaderc     --build-type ${{ env._BUILD_TYPE }} --cmake-args "-DENABLE_HLSL=ON -DENABLE_OPT=ON -DENABLE_GLSLANG_BINARIES=OFF -DSPIRV_SKIP_EXECUTABLES=ON -DSHADERC_SKIP_TESTS=ON -DSHADERC_SKIP_EXAMPLES=ON"
+  
+jobs:
+  native_builds:
+    runs-on: ${{ matrix.os }}
+    name: ${{ matrix.build_target }} Native Build
+    strategy:
+      matrix:
+        upload_includes: [ false ]
+        include:
+          - os: windows-latest
+            build_target: win-x64
+            artifact_name: build\win-x64\libveldrid-spirv.dll
+            includes_directory: ""
+            spirv_cross_args: ${{ env._MODULE_1 }} win-x64 --artifact-name build\\win-x64\\libveldrid-spirv.dll
+            shaderc_args:     ${{ env._MODULE_2 }} win-x64 --artifact-name build\\win-x64\\libveldrid-spirv.dll
+            
+          - os: windows-latest
+            build_target: win-x86
+            artifact_name: build\win-x86\libveldrid-spirv.dll
+            spirv_cross_args: ${{ env._MODULE_1 }} win-x86 --artifact-name build\\win-x86\\libveldrid-spirv.dll
+            shaderc_args:     ${{ env._MODULE_2 }} win-x86 --artifact-name build\\win-x86\\libveldrid-spirv.dll
+            
+          - os: windows-latest
+            build_target: android-arm64-v8a
+            artifact_name: build\android-arm64-v8a\libveldrid-spirv.so
+            spirv_cross_args: ${{ env._MODULE_1 }} --android-abi arm64-v8a --artifact-name build\\android-arm64-v8a\\libveldrid-spirv.so --android-ndk "%ANDROID_NDK_HOME%" 
+            shaderc_args:     ${{ env._MODULE_2 }} --android-abi arm64-v8a --artifact-name build\\android-arm64-v8a\\libveldrid-spirv.so --android-ndk "%ANDROID_NDK_HOME%" 
+            
+          - os: windows-latest 
+            build_target: android-armeabi-v7a
+            artifact_name: build\android-armeabi-v7a\libveldrid-spirv.so
+            spirv_cross_args: ${{ env._MODULE_1 }} --android-abi armeabi-v7a --artifact-name build\\android-armeabi-v7a\\libveldrid-spirv.so --android-ndk "%ANDROID_NDK_HOME%" 
+            shaderc_args:     ${{ env._MODULE_2 }} --android-abi armeabi-v7a --artifact-name build\\android-armeabi-v7a\\libveldrid-spirv.so --android-ndk "%ANDROID_NDK_HOME%"
+            
+          - os: windows-latest
+            build_target: android-x86_64
+            artifact_name: build\android-x86_64\libveldrid-spirv.so
+            spirv_cross_args: ${{ env._MODULE_1 }} --android-abi x86_64 --artifact-name build\\android-x86_64\\libveldrid-spirv.so --android-ndk "%ANDROID_NDK_HOME%" 
+            shaderc_args:     ${{ env._MODULE_2 }} --android-abi x86_64 --artifact-name build\\android-x86_64\\libveldrid-spirv.so --android-ndk "%ANDROID_NDK_HOME%" 
+            
+          - os: ubuntu-latest
+            build_target: linux-x64
+            artifact_name: build/Release/libveldrid-spirv.so
+            spirv_cross_args: ${{ env._MODULE_1 }} --artifact-name
+            shaderc_args:     ${{ env._MODULE_2 }} --artifact-name
+            
+          - os: macos-latest
+            build_target: osx-universal
+            artifact_name: build/Release/libveldrid-spirv.dylib
+            spirv_cross_args: ${{ env._MODULE_1 }} --osx-archs 'arm64;x86_64' --artifact-name
+            shaderc_args:     ${{ env._MODULE_2 }} --osx-archs 'arm64;x86_64' --artifact-name
+            
+          - os: macos-latest
+            build_target: ios
+            artifact_name: build/ios-Release/Release-iphoneos/libveldrid-spirv-combined.a
+            spirv_cross_args: ${{ env._MODULE_1 }} ios --artifact-name
+            shaderc_args:     ${{ env._MODULE_2 }} ios --artifact-name
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Get Submodules
+        run: git submodule update --init --recursive
+
+      - name: Sync Third Party
+        run:  |
+              if [ "$RUNNER_OS" == "Windows" ]; then
+                ./ext/sync-shaderc.cmd
+              else
+                ./ext/sync-shaderc.sh
+              fi
+        shell: bash
+
+      - name: Build ${{ matrix.build_target }} Native Library
+        run:  |
+              if [ "$RUNNER_OS" == "Windows" ]; then
+                ./build-native.cmd ${{ matrix.spirv_cross_args }}
+                ./build-native.cmd ${{ matrix.shaderc_args }}
+              else
+                ./build-native.sh ${{ matrix.spirv_cross_args }}
+                ./build-native.sh ${{ matrix.shaderc_args }}
+              fi
+        shell: bash
+      
+      - name: List $RUNNER_WORKSPACE after build
+        run: find $RUNNER_WORKSPACE
+        shell: bash
+      
+      - name: Upload includes
+        if: ${{ matrix.includes_directory != "" }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: includes
+          path: ${{ matrix.includes_directory }}
+          if-no-files-found: error
+
+      - name: Upload ${{ matrix.build_target }} Native Library
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.build_target }}
+          path: ${{ matrix.artifact_name }}
+          if-no-files-found: error
+
+
+  managed_build:
+    runs-on: ubuntu-latest
+    needs: native_builds
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+
+      - name: Download includes
+        uses: actions/download-artifact@v2
+        with:
+          name: includes
+          path: build/Release
+          
+      - name: Download win-x64
+        uses: actions/download-artifact@v2
+        with:
+          name: win-x64
+          path: build/Release
+
+      - name: Download win-x86
+        uses: actions/download-artifact@v2
+        with:
+          name: win-x86
+          path: build/Release
+
+      - name: Download android-arm64-v8a
+        uses: actions/download-artifact@v2
+        with:
+          name: android-arm64-v8a
+          path: build/Release
+
+      - name: Download android-x86_64
+        uses: actions/download-artifact@v2
+        with:
+          name: android-x86_64
+          path: build/Release
+
+      - name: Download android-armeabi-v7a
+        uses: actions/download-artifact@v2
+        with:
+          name: android-armeabi-v7a
+          path: build/Release
+
+      - name: Download linux-x64
+        uses: actions/download-artifact@v2
+        with:
+          name: linux-x64
+          path: build/Release
+
+      - name: Download osx-universal
+        uses: actions/download-artifact@v2
+        with:
+          name: osx-universal
+          path: build/Release
+
+      - name: Download ios
+        uses: actions/download-artifact@v2
+        with:
+          name: ios
+          path: build/Release
+
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
+      
+      - name: Install .NET tools
+        run: dotnet tool install --global ClangSharpPInvokeGenerator --version 13.0.0-beta1
+          
+      - name: Create sources
+        run: | 
+          ClangSharpPInvokeGenerator --file-directory submodules/shaderc/libshaderc/include --include-directory submodules/shaderc/libshaderc/include "@scripts/GenerateShaderc.rsp"
+          
+      - name: Restore
+        run: dotnet restore
+        
+      - name: Build
+        run: dotnet build -c Release --no-restore 
+        
+      - name: Test
+        run: dotnet test -c Release --no-restore --no-build
+       
+      - name: Pack
+        run: dotnet pack -c Release --no-restore --no-build --verbosity normal
+
+      - name: Upload NuGet artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: nuget_package
+          path: artifacts/pkg/Release/*.nupkg
+          if-no-files-found: error
+
+      - name: NuGet Push 
+        if: startsWith(github.ref, 'refs/tags/')
+        working-directory: artifacts/pkg/Release
+        run: dotnet nuget push "*.nupkg" --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_TOKEN }} --skip-duplicate
+

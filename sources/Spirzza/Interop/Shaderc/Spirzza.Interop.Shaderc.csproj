@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <TargetFramework>netstandard2.0</TargetFramework>
+	<LangVersion>9.0</LangVersion>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Memory" Version="4.5.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Pack="true" Include="../../../../build/win-x64/shaderc_shared.dll">
+      <PackagePath>runtimes/win-x64/native</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Pack="true" Include="../../../../build/win-x86/shaderc_shared.dll">
+      <PackagePath>runtimes/win-x86/native</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Pack="true" Include="../../../../build/linux-x64/">
+      <PackagePath>runtimes/linux-x64/native</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Pack="true" Include="../../../../vcpkg_installed/x64-osx/lib/zstd.dylib">
+      <PackagePath>runtimes/osx-x64/native</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
+    
