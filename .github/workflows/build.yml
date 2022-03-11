@@ -6,7 +6,7 @@ on:
 jobs:
   native_builds:
     runs-on: ${{ matrix.os }}
-    name: ${{ matrix.build_target }} Native Build
+    name: Native Build:\ ${{ matrix.build_target }}
     env:
       MODULE_ARGS_1: --submodule SPIRV-Cross --build-type Release --cmake-args "-DSPIRV_CROSS_STATIC=OFF -DSPIRV_CROSS_SHARED=ON -DSPIRV_CROSS_CLI=OFF" 
       MODULE_ARGS_2: --submodule shaderc     --build-type Release --cmake-args "-DENABLE_HLSL=ON -DENABLE_OPT=ON -DENABLE_GLSLANG_BINARIES=OFF -DSPIRV_SKIP_EXECUTABLES=ON -DSHADERC_SKIP_TESTS=ON -DSHADERC_SKIP_EXAMPLES=ON"
@@ -70,7 +70,8 @@ jobs:
         run: git submodule update --init --recursive
 
       - name: Sync Third Party
-        run: python ./utils/git-sync-deps
+        run: python $RUNNER_WORKSPACE/utils/git-sync-deps
+        shell: bash
         
       - name: Build ${{ matrix.build_target }} Native Library
         run:  |
