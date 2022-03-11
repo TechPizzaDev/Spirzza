@@ -70,7 +70,8 @@ jobs:
         run: git submodule update --init --recursive
 
       - name: Sync Third Party
-        run: python $RUNNER_WORKSPACE/utils/git-sync-deps
+        working-directory: submodules/shaderc
+        run: ./utils/git-sync-deps
         shell: bash
         
       - name: Build ${{ matrix.build_target }} Native Library
