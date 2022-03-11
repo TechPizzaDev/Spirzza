@@ -12,6 +12,7 @@ jobs:
       MODULE_ARGS_2: --submodule shaderc     --build-type Release --cmake-args "-DENABLE_HLSL=ON -DENABLE_OPT=ON -DENABLE_GLSLANG_BINARIES=OFF -DSPIRV_SKIP_EXECUTABLES=ON -DSHADERC_SKIP_TESTS=ON -DSHADERC_SKIP_EXAMPLES=ON"
   
     strategy:
+      fail-fast: false
       matrix:
         include:
           - os: windows-latest
