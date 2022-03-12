@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
+        os: [windows-latest, windows-latest, windows-latest, windows-latest, windows-latest, ubuntu-latest, macos-latest, macos-latest]
         cmake_args_spirv_cross: ['-DSPIRV_CROSS_STATIC=OFF -DSPIRV_CROSS_SHARED=ON -DSPIRV_CROSS_CLI=OFF']
         cmake_args_shaderc:     ['-DENABLE_HLSL=ON -DENABLE_OPT=ON -DENABLE_GLSLANG_BINARIES=OFF -DSPIRV_SKIP_EXECUTABLES=ON -DSHADERC_SKIP_TESTS=ON -DSHADERC_SKIP_EXAMPLES=ON']
 
@@ -65,6 +65,7 @@ jobs:
             args_spirv_cross: ios --artifact-name tmp 
             args_shaderc:     ios --artifact-name tmp
             cmake_args_spirv_cross: -DSPIRV_CROSS_STATIC=ON -DSPIRV_CROSS_SHARED=OFF -DSPIRV_CROSS_CLI=OFF
+            cmake_args_shaderc: '-DCMAKE_POLICY_DEFAULT_CMP0006=OLD -DENABLE_HLSL=ON -DENABLE_OPT=ON -DENABLE_GLSLANG_BINARIES=OFF -DSPIRV_SKIP_EXECUTABLES=ON -DSHADERC_SKIP_TESTS=ON -DSHADERC_SKIP_EXAMPLES=ON'
 
     steps:
       - uses: actions/checkout@v2
