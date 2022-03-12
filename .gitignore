@@ -3,7 +3,7 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-build
+build/
 
 # User-specific files
 *.rsuser
@@ -80,7 +80,6 @@ StyleCopReport.xml
 *.ipdb
 *.pgc
 *.pgd
-*.rsp
 *.sbr
 *.tlb
 *.tli
