@@ -1,4 +1,4 @@
-name: CI
+name: Native build
 on:
   create: # when tags are created
   workflow_dispatch: # clickable button in CI manager
