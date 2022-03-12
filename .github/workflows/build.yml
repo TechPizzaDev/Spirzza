@@ -11,58 +11,60 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        spirv_cross_cmake_args: ['-DSPIRV_CROSS_STATIC=OFF -DSPIRV_CROSS_SHARED=ON -DSPIRV_CROSS_CLI=OFF']
+        os: [windows-latest, ubuntu-latest, macos-latest]
+        cmake_args_spirv_cross: ['-DSPIRV_CROSS_STATIC=OFF -DSPIRV_CROSS_SHARED=ON -DSPIRV_CROSS_CLI=OFF']
+        cmake_args_shaderc:     ['-DENABLE_HLSL=ON -DENABLE_OPT=ON -DENABLE_GLSLANG_BINARIES=OFF -DSPIRV_SKIP_EXECUTABLES=ON -DSHADERC_SKIP_TESTS=ON -DSHADERC_SKIP_EXAMPLES=ON']
 
         include:
           - os: windows-latest
             build_target: win-x64
             artifact_name: build\win-x64\libveldrid-spirv.dll
             includes_directory: tmp
-            spirv_cross_args:  win-x64 --artifact-name build\\win-x64\\libveldrid-spirv.dll
-            shaderc_args:      win-x64 --artifact-name build\\win-x64\\libveldrid-spirv.dll
+            args_spirv_cross: win-x64 --artifact-name build\\win-x64\\libveldrid-spirv.dll
+            args_shaderc:     win-x64 --artifact-name build\\win-x64\\libveldrid-spirv.dll
             
           - os: windows-latest
             build_target: win-x86
             artifact_name: build\win-x86\libveldrid-spirv.dll
-            spirv_cross_args: win-x86 --artifact-name build\\win-x86\\libveldrid-spirv.dll
-            shaderc_args:     win-x86 --artifact-name build\\win-x86\\libveldrid-spirv.dll
+            args_spirv_cross: win-x86 --artifact-name build\\win-x86\\libveldrid-spirv.dll
+            args_shaderc:     win-x86 --artifact-name build\\win-x86\\libveldrid-spirv.dll
             
           - os: windows-latest
             build_target: android-arm64-v8a
             artifact_name: build\android-arm64-v8a\libveldrid-spirv.so
-            spirv_cross_args: --android-abi arm64-v8a --artifact-name build\\android-arm64-v8a\\libveldrid-spirv.so --android-ndk '%ANDROID_NDK_HOME%' 
-            shaderc_args:     --android-abi arm64-v8a --artifact-name build\\android-arm64-v8a\\libveldrid-spirv.so --android-ndk '%ANDROID_NDK_HOME%' 
+            args_spirv_cross: --android-abi arm64-v8a --artifact-name build\\android-arm64-v8a\\libveldrid-spirv.so --android-ndk '%ANDROID_NDK_HOME%' 
+            args_shaderc:     --android-abi arm64-v8a --artifact-name build\\android-arm64-v8a\\libveldrid-spirv.so --android-ndk '%ANDROID_NDK_HOME%' 
             
           - os: windows-latest 
             build_target: android-armeabi-v7a
             artifact_name: build\android-armeabi-v7a\libveldrid-spirv.so
-            spirv_cross_args: --android-abi armeabi-v7a --artifact-name build\\android-armeabi-v7a\\libveldrid-spirv.so --android-ndk '%ANDROID_NDK_HOME%' 
-            shaderc_args:     --android-abi armeabi-v7a --artifact-name build\\android-armeabi-v7a\\libveldrid-spirv.so --android-ndk '%ANDROID_NDK_HOME%'
+            args_spirv_cross: --android-abi armeabi-v7a --artifact-name build\\android-armeabi-v7a\\libveldrid-spirv.so --android-ndk '%ANDROID_NDK_HOME%' 
+            args_shaderc:     --android-abi armeabi-v7a --artifact-name build\\android-armeabi-v7a\\libveldrid-spirv.so --android-ndk '%ANDROID_NDK_HOME%'
             
           - os: windows-latest
             build_target: android-x86_64
             artifact_name: build\android-x86_64\libveldrid-spirv.so
-            spirv_cross_args: --android-abi x86_64 --artifact-name build\\android-x86_64\\libveldrid-spirv.so --android-ndk '%ANDROID_NDK_HOME%' 
-            shaderc_args:     --android-abi x86_64 --artifact-name build\\android-x86_64\\libveldrid-spirv.so --android-ndk '%ANDROID_NDK_HOME%' 
+            args_spirv_cross: --android-abi x86_64 --artifact-name build\\android-x86_64\\libveldrid-spirv.so --android-ndk '%ANDROID_NDK_HOME%' 
+            args_shaderc:     --android-abi x86_64 --artifact-name build\\android-x86_64\\libveldrid-spirv.so --android-ndk '%ANDROID_NDK_HOME%' 
             
           - os: ubuntu-latest
             build_target: linux-x64
             artifact_name: build/Release/libveldrid-spirv.so
-            spirv_cross_args: --artifact-name tmp
-            shaderc_args:     --artifact-name tmp
+            args_spirv_cross: --artifact-name tmp
+            args_shaderc:     --artifact-name tmp
             
           - os: macos-latest
             build_target: osx-universal
             artifact_name: build/Release/libveldrid-spirv.dylib
-            spirv_cross_args: --osx-archs 'arm64;x86_64' --artifact-name tmp
-            shaderc_args:     --osx-archs 'arm64;x86_64' --artifact-name tmp
+            args_spirv_cross: --osx-archs 'arm64;x86_64' --artifact-name tmp
+            args_shaderc:     --osx-archs 'arm64;x86_64' --artifact-name tmp
             
           - os: macos-latest
             build_target: ios
             artifact_name: build/ios-Release/Release-iphoneos/libveldrid-spirv-combined.a
-            spirv_cross_args: ios --artifact-name tmp 
-            spirv_cross_cmake_args: -DSPIRV_CROSS_STATIC=ON -DSPIRV_CROSS_SHARED=OFF -DSPIRV_CROSS_CLI=OFF
-            shaderc_args:     ios --artifact-name tmp
+            args_spirv_cross: ios --artifact-name tmp 
+            args_shaderc:     ios --artifact-name tmp
+            cmake_args_spirv_cross: -DSPIRV_CROSS_STATIC=ON -DSPIRV_CROSS_SHARED=OFF -DSPIRV_CROSS_CLI=OFF
 
     steps:
       - uses: actions/checkout@v2
@@ -79,15 +81,14 @@ jobs:
         env:
           MODULE_ARGS_1: --submodule SPIRV-Cross --build-type Release
           MODULE_ARGS_2: --submodule shaderc --build-type Release
-          MODULE_CMAKE_ARGS_2: -DENABLE_HLSL=ON -DENABLE_OPT=ON -DENABLE_GLSLANG_BINARIES=OFF -DSPIRV_SKIP_EXECUTABLES=ON -DSHADERC_SKIP_TESTS=ON -DSHADERC_SKIP_EXAMPLES=ON
-
+          
         run:  |
               if [ "$RUNNER_OS" == "Windows" ]; then
-                ./build-native.cmd ${{ matrix.spirv_cross_args }} $MODULE_ARGS_1 --cmake-args "${{ matrix.spirv_cross_cmake_args }}"
-                ./build-native.cmd ${{ matrix.shaderc_args }}     $MODULE_ARGS_2 --cmake-args "$MODULE_CMAKE_ARGS_2"
+                ./build-native.cmd ${{ matrix.args_spirv_cross }} $MODULE_ARGS_1 --cmake-args "${{ matrix.cmake_args_spirv_cross }}"
+                ./build-native.cmd ${{ matrix.args_shaderc }}     $MODULE_ARGS_2 --cmake-args "${{ matrix.cmake_args_shaderc }}"
               else
-                ./build-native.sh ${{ matrix.spirv_cross_args }} $MODULE_ARGS_1 --cmake-args "${{ matrix.spirv_cross_cmake_args }}"
-                ./build-native.sh ${{ matrix.shaderc_args }}     $MODULE_ARGS_2 --cmake-args "$MODULE_CMAKE_ARGS_2"
+                ./build-native.sh ${{ matrix.args_spirv_cross }} $MODULE_ARGS_1 --cmake-args "${{ matrix.cmake_args_spirv_cross }}"
+                ./build-native.sh ${{ matrix.args_shaderc }}     $MODULE_ARGS_2 --cmake-args "${{ matrix.cmake_args_shaderc }}"
               fi
         shell: bash
       
