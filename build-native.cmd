@@ -1,5 +1,5 @@
 @setlocal
-@echo off
+@echo on
 
 set _CMAKE_BUILD_TYPE=Debug
 set _BUILD_ARCH=x64
@@ -48,7 +48,7 @@ cmake ..\..\submodules\%_SUBMODULE% -DCMAKE_BUILD_TYPE=%_CMAKE_BUILD_TYPE% %_CMA
 cmake --build . --config %_CMAKE_BUILD_TYPE%
 popd
 
-copy %_ARTIFACT_NAME% %_OUT_DIR%
+cp %_ARTIFACT_NAME% %_OUT_DIR%
 
 :Success
 exit /b 0
