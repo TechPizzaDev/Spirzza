@@ -48,7 +48,7 @@ cmake ..\..\submodules\%_SUBMODULE% -DCMAKE_BUILD_TYPE=%_CMAKE_BUILD_TYPE% %_CMA
 cmake --build . --config %_CMAKE_BUILD_TYPE%
 popd
 
-copy %_ARTIFACT_NAME% %OUT_DIR%
+copy %_ARTIFACT_NAME% %_OUT_DIR%
 
 :Success
 exit /b 0
