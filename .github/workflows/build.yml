@@ -14,66 +14,58 @@ jobs:
         include:
           - os: windows-latest
             build_target: win-x64
-            artifact_name: build\win-x64\libveldrid-spirv.dll
-            includes_directory: tmp
-            args_spirv_cross: win-x64 --artifact-name build\\win-x64\\libveldrid-spirv.dll
-            args_shaderc:     win-x64 --artifact-name build\\win-x64\\libveldrid-spirv.dll
+            create_sources: true
+            args_spirv_cross: win-x64 --artifact-name build/SPIRV-Cross/Release/spirv-cross-c-shared.dll  --out-dir $OUT_DIR
+            args_shaderc:     win-x64 --artifact-name build/shaderc/libshaderc/Release/shaderc_shared.dll --out-dir $OUT_DIR
             cmake_args_spirv_cross: $CMAKE_ARGS_1
             cmake_args_shaderc:     $CMAKE_ARGS_2
             
           - os: windows-latest
             build_target: win-x86
-            artifact_name: build\win-x86\libveldrid-spirv.dll
-            args_spirv_cross: win-x86 --artifact-name build\\win-x86\\libveldrid-spirv.dll
-            args_shaderc:     win-x86 --artifact-name build\\win-x86\\libveldrid-spirv.dll
+            args_spirv_cross: win-x86 --artifact-name build/SPIRV-Cross/Release/spirv-cross-c-shared.dll  --out-dir $OUT_DIR
+            args_shaderc:     win-x86 --artifact-name build/shaderc/libshaderc/Release/shaderc_shared.dll --out-dir $OUT_DIR
             cmake_args_spirv_cross: $CMAKE_ARGS_1
             cmake_args_shaderc:     $CMAKE_ARGS_2
             
           - os: windows-latest
             build_target: android-arm64-v8a
-            artifact_name: build\android-arm64-v8a\libveldrid-spirv.so
-            args_spirv_cross: --android-abi arm64-v8a --artifact-name build\\android-arm64-v8a\\libveldrid-spirv.so --android-ndk '%ANDROID_NDK_HOME%' 
-            args_shaderc:     --android-abi arm64-v8a --artifact-name build\\android-arm64-v8a\\libveldrid-spirv.so --android-ndk '%ANDROID_NDK_HOME%' 
+            args_spirv_cross: --android-abi arm64-v8a --artifact-name build/SPIRV-Cross/libspirv-cross-c-shared.so  --out-dir $OUT_DIR --android-ndk '%ANDROID_NDK_HOME%' 
+            args_shaderc:     --android-abi arm64-v8a --artifact-name build/shaderc/libshaderc/libshaderc_shared.so --out-dir $OUT_DIR --android-ndk '%ANDROID_NDK_HOME%' 
             cmake_args_spirv_cross: $CMAKE_ARGS_1
             cmake_args_shaderc:     $CMAKE_ARGS_2
             
           - os: windows-latest 
             build_target: android-armeabi-v7a
-            artifact_name: build\android-armeabi-v7a\libveldrid-spirv.so
-            args_spirv_cross: --android-abi armeabi-v7a --artifact-name build\\android-armeabi-v7a\\libveldrid-spirv.so --android-ndk '%ANDROID_NDK_HOME%' 
-            args_shaderc:     --android-abi armeabi-v7a --artifact-name build\\android-armeabi-v7a\\libveldrid-spirv.so --android-ndk '%ANDROID_NDK_HOME%'
+            args_spirv_cross: --android-abi armeabi-v7a --artifact-name build/SPIRV-Cross/libspirv-cross-c-shared.so  --out-dir $OUT_DIR --android-ndk '%ANDROID_NDK_HOME%' 
+            args_shaderc:     --android-abi armeabi-v7a --artifact-name build/shaderc/libshaderc/libshaderc_shared.so --out-dir $OUT_DIR --android-ndk '%ANDROID_NDK_HOME%'
             cmake_args_spirv_cross: $CMAKE_ARGS_1
             cmake_args_shaderc:     $CMAKE_ARGS_2
             
           - os: windows-latest
             build_target: android-x86_64
-            artifact_name: build\android-x86_64\libveldrid-spirv.so
-            args_spirv_cross: --android-abi x86_64 --artifact-name build\\android-x86_64\\libveldrid-spirv.so --android-ndk '%ANDROID_NDK_HOME%' 
-            args_shaderc:     --android-abi x86_64 --artifact-name build\\android-x86_64\\libveldrid-spirv.so --android-ndk '%ANDROID_NDK_HOME%' 
+            args_spirv_cross: --android-abi x86_64 --artifact-name build/SPIRV-Cross/libspirv-cross-c-shared.so  --out-dir $OUT_DIR --android-ndk '%ANDROID_NDK_HOME%' 
+            args_shaderc:     --android-abi x86_64 --artifact-name build/shaderc/libshaderc/libshaderc_shared.so --out-dir $OUT_DIR --android-ndk '%ANDROID_NDK_HOME%' 
             cmake_args_spirv_cross: $CMAKE_ARGS_1
             cmake_args_shaderc:     $CMAKE_ARGS_2
             
           - os: ubuntu-latest
             build_target: linux-x64
-            artifact_name: build/Release/libveldrid-spirv.so
-            args_spirv_cross: --artifact-name tmp
-            args_shaderc:     --artifact-name tmp
+            args_spirv_cross: --artifact-name build/SPIRV-Cross/libspirv-cross-c-shared.so  --out-dir $OUT_DIR
+            args_shaderc:     --artifact-name build/shaderc/libshaderc/libshaderc_shared.so --out-dir $OUT_DIR
             cmake_args_spirv_cross: $CMAKE_ARGS_1
             cmake_args_shaderc:     $CMAKE_ARGS_2
             
           - os: macos-latest
             build_target: osx-universal
-            artifact_name: build/Release/libveldrid-spirv.dylib
-            args_spirv_cross: --osx-archs 'arm64;x86_64' --artifact-name tmp
-            args_shaderc:     --osx-archs 'arm64;x86_64' --artifact-name tmp
+            args_spirv_cross: --osx-archs 'arm64;x86_64' --artifact-name build/SPIRV-Cross/libspirv-cross-c-shared.dylib  --out-dir $OUT_DIR
+            args_shaderc:     --osx-archs 'arm64;x86_64' --artifact-name build/shaderc/libshaderc/libshaderc_shared.dylib --out-dir $OUT_DIR
             cmake_args_spirv_cross: $CMAKE_ARGS_1
             cmake_args_shaderc:     $CMAKE_ARGS_2
             
           - os: macos-latest
             build_target: ios
-            artifact_name: build/ios-Release/Release-iphoneos/libveldrid-spirv-combined.a
-            args_spirv_cross: ios --artifact-name tmp 
-            args_shaderc:     ios --artifact-name tmp
+            args_spirv_cross: ios --artifact-name build/SPIRV-Cross/Release-iphoneos/libspirv-cross-c.a           --out-dir $OUT_DIR
+            args_shaderc:     ios --artifact-name build/shaderc/libshaderc/Release-iphoneos/libshaderc_combined.a --out-dir $OUT_DIR
             cmake_args_spirv_cross: -DSPIRV_CROSS_STATIC=ON -DSPIRV_CROSS_SHARED=OFF -DSPIRV_CROSS_CLI=OFF
             cmake_args_shaderc:     -DCMAKE_POLICY_DEFAULT_CMP0006=OLD -DCMAKE_POLICY_DEFAULT_CMP0077=NEW -DENABLE_HLSL=ON -DENABLE_OPT=ON -DENABLE_GLSLANG_BINARIES=OFF -DSPIRV_SKIP_EXECUTABLES=ON -DSHADERC_SKIP_TESTS=ON -DSHADERC_SKIP_EXAMPLES=ON -DSHADERC_SKIP_INSTALL=ON
 
@@ -90,12 +82,14 @@ jobs:
         
       - name: Build native libraries
         env:
+          OUT_DIR: build_binaries
           MODULE_ARGS_1: --submodule SPIRV-Cross --build-type Release
           MODULE_ARGS_2: --submodule shaderc --build-type Release
           CMAKE_ARGS_1: -DSPIRV_CROSS_STATIC=OFF -DSPIRV_CROSS_SHARED=ON -DSPIRV_CROSS_CLI=OFF
           CMAKE_ARGS_2: -DENABLE_HLSL=ON -DENABLE_OPT=ON -DENABLE_GLSLANG_BINARIES=OFF -DSPIRV_SKIP_EXECUTABLES=ON -DSHADERC_SKIP_TESTS=ON -DSHADERC_SKIP_EXAMPLES=ON -DSHADERC_SKIP_INSTALL=ON
           
         run:  |
+              mkdir $OUT_DIR
               if [ "$RUNNER_OS" == "Windows" ]; then
                 ./build-native.cmd ${{ matrix.args_spirv_cross }} $MODULE_ARGS_1 --cmake-args "${{ matrix.cmake_args_spirv_cross }}"
                 ./build-native.cmd ${{ matrix.args_shaderc }}     $MODULE_ARGS_2 --cmake-args "${{ matrix.cmake_args_shaderc }}"
@@ -109,19 +103,27 @@ jobs:
         run: find $RUNNER_WORKSPACE
         shell: bash
       
-      - name: Upload includes
-        if: ${{ matrix.includes_directory != '' }}
+      - name: Create sources
+        if: ${{ matrix.create_sources }}
+        run: | 
+          ClangSharpPInvokeGenerator --file-directory submodules/shaderc/libshaderc/include --include-directory submodules/shaderc/libshaderc/include "@scripts/GenerateShaderc.rsp"
+          ClangSharpPInvokeGenerator --file-directory submodules/SPIRV-Cross --include-directory submodules/SPIRV-Cross "@scripts/GenerateSpirvCross.rsp"
+          
+      - name: Upload source artifacts
+        if: ${{ matrix.create_sources }}
         uses: actions/upload-artifact@v2
         with:
-          name: includes
-          path: ${{ matrix.includes_directory }}
+          name: sources
+          path: |
+            sources/
+            tests/
           if-no-files-found: error
 
       - name: Upload native library artifacts
         uses: actions/upload-artifact@v2
         with:
           name: ${{ matrix.build_target }}
-          path: ${{ matrix.artifact_name }}
+          path: build_binaries/
           if-no-files-found: error
 
 
@@ -134,62 +136,64 @@ jobs:
         with:
           fetch-depth: 0
 
-
-      - name: Download includes
+      - name: Download source artifacts
         uses: actions/download-artifact@v2
         with:
-          name: includes
-          path: build/Release
+          name: sources
           
       - name: Download win-x64
         uses: actions/download-artifact@v2
         with:
           name: win-x64
-          path: build/Release
+          path: build_binaries/
 
       - name: Download win-x86
         uses: actions/download-artifact@v2
         with:
           name: win-x86
-          path: build/Release
+          path: build_binaries/
 
       - name: Download android-arm64-v8a
         uses: actions/download-artifact@v2
         with:
           name: android-arm64-v8a
-          path: build/Release
+          path: build_binaries/
 
       - name: Download android-x86_64
         uses: actions/download-artifact@v2
         with:
           name: android-x86_64
-          path: build/Release
+          path: build_binaries/
 
       - name: Download android-armeabi-v7a
         uses: actions/download-artifact@v2
         with:
           name: android-armeabi-v7a
-          path: build/Release
+          path: build_binaries/
 
       - name: Download linux-x64
         uses: actions/download-artifact@v2
         with:
           name: linux-x64
-          path: build/Release
+          path: build_binaries/
 
       - name: Download osx-universal
         uses: actions/download-artifact@v2
         with:
           name: osx-universal
-          path: build/Release
+          path: build_binaries/
 
       - name: Download ios
         uses: actions/download-artifact@v2
         with:
           name: ios
-          path: build/Release
-
-
+          path: build_binaries/
+          
+          
+      - name: List $RUNNER_WORKSPACE after build
+        run: find $RUNNER_WORKSPACE
+        shell: bash
+        
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
@@ -197,10 +201,6 @@ jobs:
       
       - name: Install .NET tools
         run: dotnet tool install --global ClangSharpPInvokeGenerator --version 13.0.0-beta1
-          
-      - name: Create sources
-        run: | 
-          ClangSharpPInvokeGenerator --file-directory submodules/shaderc/libshaderc/include --include-directory submodules/shaderc/libshaderc/include "@scripts/GenerateShaderc.rsp"
           
       - name: Restore
         run: dotnet restore

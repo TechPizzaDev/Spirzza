@@ -10,6 +10,7 @@ _CMakeOsxArchitectures=
 _CMakeGenerator=
 _Submodule=
 _ArtifactName=
+_OutDir=
 
 while :; do
     if [ $# -le 0 ]; then
@@ -32,6 +33,10 @@ while :; do
             ;;
 		--artifact-name)
             _ArtifactName=$2
+            shift
+            ;;
+		--out-dir)
+            _OutDir=$2
             shift
             ;;
         ios)
@@ -64,3 +69,5 @@ pushd $_OutputPath
 cmake ../../submodules/$_Submodule -DCMAKE_BUILD_TYPE=$_CMakeBuildType $_CMakeArgs $_CMakeGenerator $_CMakeToolchain $_CMakePlatform $_CMakeEnableBitcode -DPYTHON_EXECUTABLE=$_PythonExePath -DCMAKE_OSX_ARCHITECTURES="$_CMakeOsxArchitectures"
 cmake --build . --config $_CMakeBuildType
 popd
+
+cp $_ArtifactName $_OutDir

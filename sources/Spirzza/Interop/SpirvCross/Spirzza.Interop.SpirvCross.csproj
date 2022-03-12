@@ -1,40 +1,52 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <TargetFramework>netstandard2.0</TargetFramework>
-	<LangVersion>9.0</LangVersion>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-  </PropertyGroup>
+	<PropertyGroup>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<LangVersion>9.0</LangVersion>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<NativeAssetsPath Condition="'$(NativeAssetsPath)' == ''">$(RepositoryRootDirectory)/build_binaries/</NativeAssetsPath>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="System.Memory" Version="4.5.4" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="System.Memory" Version="4.5.4" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Pack="true" Include="../../../../build/win-x64/shaderc_shared.dll">
-      <PackagePath>runtimes/win-x64/native</PackagePath>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="build/Xamarin.iOS10/SpirvCross.targets">
+			<PackagePath>build/Xamarin.iOS10/SpirvCross.targets</PackagePath>
+			<Pack>true</Pack>
+		</Content>
+		<Content Include="build/Xamarin.iOS10/SpirvCross.dll.config">
+			<PackagePath>build/Xamarin.iOS10/SpirvCross.dll.config</PackagePath>
+			<Pack>true</Pack>
+		</Content>
+		<Content Include="build/MonoAndroid10/SpirvCross.targets">
+			<PackagePath>build/MonoAndroid10/SpirvCross.targets</PackagePath>
+			<Pack>true</Pack>
+		</Content>
+		<Content Include="build/net40/SpirvCross.targets">
+			<PackagePath>build/net40/SpirvCross.targets</PackagePath>
+			<Pack>true</Pack>
+		</Content>
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Pack="true" Include="../../../../build/win-x86/shaderc_shared.dll">
-      <PackagePath>runtimes/win-x86/native</PackagePath>
-    </None>
-  </ItemGroup>
+	<Target Name="BeforePackage" BeforeTargets="AssignTargetPaths">
+		<ItemGroup>
+			<_NativeAssetName Include="$(Configuration)/win-x86/spirv-cross-c-shared.dll" PackagePath="runtimes/win-x86/native" />
+			<_NativeAssetName Include="$(Configuration)/win-x64/spirv-cross-c-shared.dll" PackagePath="runtimes/win-x64/native" />
+			<_NativeAssetName Include="$(Configuration)/linux-x64/libspirv-cross-c-shared.so" PackagePath="runtimes/linux-x64/native" />
+			<_NativeAssetName Include="$(Configuration)/osx-universal/libspirv-cross-c-shared.dylib" PackagePath="runtimes/osx-universal/native" />
+			<_NativeAssetName Include="$(Configuration)/ios/libspirv-cross-c.a" PackagePath="build/Xamarin.iOS10/native" />
+			<_NativeAssetName Include="$(Configuration)/android-arm64-v8a/libspirv-cross-c-shared.so" PackagePath="build/MonoAndroid10/native/arm64-v8a" />
+			<_NativeAssetName Include="$(Configuration)/android-armeabi-v7a/libspirv-cross-c-shared.so" PackagePath="build/MonoAndroid10/native/armeabi-v7a" />
+			<_NativeAssetName Include="$(Configuration)/android-x86_64/libspirv-cross-c-shared.so" PackagePath="build/MonoAndroid10/native/x86_64" />
 
-  <ItemGroup>
-    <None Pack="true" Include="../../../../build/linux-x64/libshaderc.so">
-      <PackagePath>runtimes/linux-x64/native</PackagePath>
-    </None>
-  </ItemGroup>
+			<_ExistingAssets Include="@(_NativeAssetName)" Condition="Exists('$(NativeAssetsPath)/%(Identity)')" />
 
-  <ItemGroup>
-    <None Pack="true" Include="../../../../vcpkg_installed/x64-osx/lib/zstd.dylib">
-      <PackagePath>runtimes/osx-x64/native</PackagePath>
-    </None>
-  </ItemGroup>
+			<Content Include="@(_ExistingAssets->'$(NativeAssetsPath)/%(Identity)')" CopyToOutputDirectory="PreserveNewest" PackagePath="%(PackagePath)" Pack="true" />
+		</ItemGroup>
+	</Target>
 
 </Project>
-    
