@@ -7,6 +7,6 @@
       <ForceLoad>True</ForceLoad>
       <IsCxx>True</IsCxx>
     </NativeReference>
-    <BundleResource Include="$(MSBuildThisFileDirectory)Shaderc.dll.config" />
+    <BundleResource Include="$(MSBuildThisFileDirectory)Spirzza.Interop.Shaderc.dll.config" />
   </ItemGroup>
 </Project>

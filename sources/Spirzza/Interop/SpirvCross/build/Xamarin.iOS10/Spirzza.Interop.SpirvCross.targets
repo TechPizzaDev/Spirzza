@@ -7,6 +7,6 @@
       <ForceLoad>True</ForceLoad>
       <IsCxx>True</IsCxx>
     </NativeReference>
-    <BundleResource Include="$(MSBuildThisFileDirectory)SpirvCross.dll.config" />
+    <BundleResource Include="$(MSBuildThisFileDirectory)Spirzza.Interop.SpirvCross.dll.config" />
   </ItemGroup>
 </Project>
