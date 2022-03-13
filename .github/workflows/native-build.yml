@@ -81,6 +81,7 @@ jobs:
         shell: bash
         
       - name: Build native libraries
+        if: ${{ matrix.build_target == 'win-x64' }}
         env:
           OUT_DIR: build_binaries
           MODULE_ARGS_1: --submodule SPIRV-Cross --build-type Release
@@ -98,6 +99,13 @@ jobs:
                 ./build-native.sh ${{ matrix.args_shaderc }}     $MODULE_ARGS_2 --cmake-args "${{ matrix.cmake_args_shaderc }}"
               fi
         shell: bash
+
+      - name: Upload native library artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.build_target }}
+          path: build_binaries/
+          if-no-files-found: error
       
       - name: Setup .NET
         if: ${{ matrix.create_sources }}
@@ -124,13 +132,6 @@ jobs:
           path: |
             sources/
             tests/
-          if-no-files-found: error
-
-      - name: Upload native library artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: ${{ matrix.build_target }}
-          path: build_binaries/
           if-no-files-found: error
 
 
@@ -207,16 +208,16 @@ jobs:
           dotnet-version: '6.0.x'
       
       - name: Restore
-        run: dotnet restore
+        run: dotnet restore sources/Spirzza/Interop/Spirzza.Interop.sln
         
       - name: Build
-        run: dotnet build -c Release --no-restore 
+        run: dotnet build sources/Spirzza/Interop/Spirzza.Interop.sln -c Release --no-restore 
         
       - name: Test
-        run: dotnet test -c Release --no-restore --no-build
+        run: dotnet test sources/Spirzza/Interop/Spirzza.Interop.sln -c Release --no-restore --no-build
        
       - name: Pack
-        run: dotnet pack -c Release --no-restore --no-build --verbosity normal
+        run: dotnet pack sources/Spirzza/Interop/Spirzza.Interop.sln -c Release --no-restore --no-build --verbosity normal
 
       - name: Upload NuGet artifact
         uses: actions/upload-artifact@v2

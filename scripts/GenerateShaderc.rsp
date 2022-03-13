@@ -20,3 +20,7 @@ shaderc/visibility.h
 
 --methodClassName
 Shaderc
+
+--with-type
+shaderc_env_version=uint
+shaderc_spirv_version=uint

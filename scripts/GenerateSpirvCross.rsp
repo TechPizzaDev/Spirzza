@@ -14,11 +14,21 @@ spirv-cross-c-shared
 
 --file
 spirv_cross_c.h
+spirv.h
 
 --methodClassName
 SpirvCross
 
 --remap
+spvc_context_s=spvc_context 			
+spvc_parsed_ir_s=spvc_parsed_ir 		
+spvc_compiler_s=spvc_compiler		
+spvc_compiler_options_s=spvc_compiler_options
+spvc_resources_s=spvc_resources	
+spvc_type_s=spvc_type		
+spvc_constant_s=spvc_constant		
+spvc_set_s=spvc_set
+spvc_msl_vertex_format=spvc_msl_shader_input_format
 SpvSourceLanguage_=SpvSourceLanguage
 SpvExecutionModel_=SpvExecutionModel
 SpvAddressingModel_=SpvAddressingModel
@@ -70,4 +80,11 @@ SpvQuantizationModes_=SpvQuantizationModes
 SpvOverflowModes_=SpvOverflowModes
 SpvPackedVectorFormat_=SpvPackedVectorFormat
 SpvOp_=SpvOp
-spvc_msl_vertex_format=spvc_msl_shader_input_format
+spvc_hlsl_binding_flags=spvc_hlsl_binding_flag_bits
+
+--with-transparent-struct
+spvc_bool=byte
+SpvId=uint
+spvc_type_id=uint
+spvc_variable_id=uint
+spvc_constant_id=uint
