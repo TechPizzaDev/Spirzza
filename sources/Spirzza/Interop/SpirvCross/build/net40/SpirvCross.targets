@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_Spirzza_SpirvCross_IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</_Spirzza_SpirvCross_IsWindows>
+    <_Spirzza_SpirvCross_IsMacOS Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</_Spirzza_SpirvCross_IsMacOS>
+    <_Spirzza_SpirvCross_IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</_Spirzza_SpirvCross_IsLinux>
+
+    <_Spirzza_SpirvCross_NativeRuntime Condition=" '$(_Spirzza_SpirvCross_NativeRuntime)' == '' And '$(_Spirzza_SpirvCross_IsMacOS)' == 'true' And ('$(Prefer32Bit)' == 'false' Or '$(PlatformTarget)' == 'x64')">osx-x64</_Spirzza_SpirvCross_NativeRuntime>
+    <_Spirzza_SpirvCross_NativeRuntime Condition=" '$(_Spirzza_SpirvCross_NativeRuntime)' == '' And '$(_Spirzza_SpirvCross_IsLinux)' == 'true' And ('$(Prefer32Bit)' == 'false' Or '$(PlatformTarget)' == 'x64')">linux-x64</_Spirzza_SpirvCross_NativeRuntime>
+    <_Spirzza_SpirvCross_NativeRuntime Condition=" '$(_Spirzza_SpirvCross_NativeRuntime)' == '' And '$(_Spirzza_SpirvCross_IsWindows)' == 'true' And ('$(Prefer32Bit)' == 'true' Or '$(PlatformTarget)' == 'x86')">win-x86</_Spirzza_SpirvCross_NativeRuntime>
+    <_Spirzza_SpirvCross_NativeRuntime Condition=" '$(_Spirzza_SpirvCross_NativeRuntime)' == '' And '$(_Spirzza_SpirvCross_IsWindows)' == 'true' And ('$(Prefer32Bit)' == 'false' Or '$(PlatformTarget)' == 'x64')">win-x64</_Spirzza_SpirvCross_NativeRuntime>
+
+    <_Spirzza_SpirvCross_NativeLibName Condition="'$(_Spirzza_SpirvCross_NativeRuntime)' == 'win-x86' Or '$(_Spirzza_SpirvCross_NativeRuntime)' == 'win-x64'">spirv-cross-c-shared.dll</_Spirzza_SpirvCross_NativeLibName>
+    <_Spirzza_SpirvCross_NativeLibName Condition="'$(_Spirzza_SpirvCross_NativeRuntime)' == 'osx-x64'">libspirv-cross-c-shared.dylib</_Spirzza_SpirvCross_NativeLibName>
+    <_Spirzza_SpirvCross_NativeLibName Condition="'$(_Spirzza_SpirvCross_NativeRuntime)' == 'linux-x64'">libspirv-cross-c-shared.so</_Spirzza_SpirvCross_NativeLibName>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Condition="'$(_Spirzza_SpirvCross_NativeRuntime)' != ''" Include="$(MSBuildThisFileDirectory)..\..\runtimes\$(_Spirzza_SpirvCross_NativeRuntime)\native\$(_Spirzza_SpirvCross_NativeLibName)">
+      <Link>%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Visible>False</Visible>
+    </Content>
+  </ItemGroup>
+</Project>

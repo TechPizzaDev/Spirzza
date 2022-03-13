@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_Spirzza_Shaderc_IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</_Spirzza_Shaderc_IsWindows>
+    <_Spirzza_Shaderc_IsMacOS Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</_Spirzza_Shaderc_IsMacOS>
+    <_Spirzza_Shaderc_IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</_Spirzza_Shaderc_IsLinux>
+
+    <_Spirzza_Shaderc_NativeRuntime Condition=" '$(_Spirzza_Shaderc_NativeRuntime)' == '' And '$(_Spirzza_Shaderc_IsMacOS)' == 'true' And ('$(Prefer32Bit)' == 'false' Or '$(PlatformTarget)' == 'x64')">osx-x64</_Spirzza_Shaderc_NativeRuntime>
+    <_Spirzza_Shaderc_NativeRuntime Condition=" '$(_Spirzza_Shaderc_NativeRuntime)' == '' And '$(_Spirzza_Shaderc_IsLinux)' == 'true' And ('$(Prefer32Bit)' == 'false' Or '$(PlatformTarget)' == 'x64')">linux-x64</_Spirzza_Shaderc_NativeRuntime>
+    <_Spirzza_Shaderc_NativeRuntime Condition=" '$(_Spirzza_Shaderc_NativeRuntime)' == '' And '$(_Spirzza_Shaderc_IsWindows)' == 'true' And ('$(Prefer32Bit)' == 'true' Or '$(PlatformTarget)' == 'x86')">win-x86</_Spirzza_Shaderc_NativeRuntime>
+    <_Spirzza_Shaderc_NativeRuntime Condition=" '$(_Spirzza_Shaderc_NativeRuntime)' == '' And '$(_Spirzza_Shaderc_IsWindows)' == 'true' And ('$(Prefer32Bit)' == 'false' Or '$(PlatformTarget)' == 'x64')">win-x64</_Spirzza_Shaderc_NativeRuntime>
+
+    <_Spirzza_Shaderc_NativeLibName Condition="'$(_Spirzza_Shaderc_NativeRuntime)' == 'win-x86' Or '$(_Spirzza_Shaderc_NativeRuntime)' == 'win-x64'">shaderc_shared.dll</_Spirzza_Shaderc_NativeLibName>
+    <_Spirzza_Shaderc_NativeLibName Condition="'$(_Spirzza_Shaderc_NativeRuntime)' == 'osx-x64'">libshaderc_shared.dylib</_Spirzza_Shaderc_NativeLibName>
+    <_Spirzza_Shaderc_NativeLibName Condition="'$(_Spirzza_Shaderc_NativeRuntime)' == 'linux-x64'">libshaderc_shared.so</_Spirzza_Shaderc_NativeLibName>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Condition="'$(_Spirzza_Shaderc_NativeRuntime)' != ''" Include="$(MSBuildThisFileDirectory)..\..\runtimes\$(_Spirzza_Shaderc_NativeRuntime)\native\$(_Spirzza_Shaderc_NativeLibName)">
+      <Link>%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Visible>False</Visible>
+    </Content>
+  </ItemGroup>
+</Project>
