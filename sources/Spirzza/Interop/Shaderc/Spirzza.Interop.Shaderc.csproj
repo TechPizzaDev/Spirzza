@@ -14,20 +14,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Include="build/Xamarin.iOS10/Shaderc.targets">
-			<PackagePath>build/Xamarin.iOS10/Shaderc.targets</PackagePath>
+		<Content Include="build/Xamarin.iOS10/Spirzza.Interop.Shaderc.targets">
+			<PackagePath>build/Xamarin.iOS10/Spirzza.Interop.Shaderc.targets</PackagePath>
 			<Pack>true</Pack>
 		</Content>
-		<Content Include="build/Xamarin.iOS10/Shaderc.dll.config">
-			<PackagePath>build/Xamarin.iOS10/Shaderc.dll.config</PackagePath>
+		<Content Include="build/Xamarin.iOS10/Spirzza.Interop.Shaderc.dll.config">
+			<PackagePath>build/Xamarin.iOS10/Spirzza.Interop.Shaderc.dll.config</PackagePath>
 			<Pack>true</Pack>
 		</Content>
-		<Content Include="build/MonoAndroid10/Shaderc.targets">
-			<PackagePath>build/MonoAndroid10/Shaderc.targets</PackagePath>
+		<Content Include="build/MonoAndroid10/Spirzza.Interop.Shaderc.targets">
+			<PackagePath>build/MonoAndroid10/Spirzza.Interop.Shaderc.targets</PackagePath>
 			<Pack>true</Pack>
 		</Content>
-		<Content Include="build/net40/Shaderc.targets">
-			<PackagePath>build/net40/Shaderc.targets</PackagePath>
+		<Content Include="build/net40/Spirzza.Interop.Shaderc.targets">
+			<PackagePath>build/net40/Spirzza.Interop.Shaderc.targets</PackagePath>
 			<Pack>true</Pack>
 		</Content>
 	</ItemGroup>

@@ -14,20 +14,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Include="build/Xamarin.iOS10/SpirvCross.targets">
-			<PackagePath>build/Xamarin.iOS10/SpirvCross.targets</PackagePath>
+		<Content Include="build/Xamarin.iOS10/Spirzza.Interop.SpirvCross.targets">
+			<PackagePath>build/Xamarin.iOS10/Spirzza.Interop.SpirvCross.targets</PackagePath>
 			<Pack>true</Pack>
 		</Content>
-		<Content Include="build/Xamarin.iOS10/SpirvCross.dll.config">
-			<PackagePath>build/Xamarin.iOS10/SpirvCross.dll.config</PackagePath>
+		<Content Include="build/Xamarin.iOS10/Spirzza.Interop.SpirvCross.dll.config">
+			<PackagePath>build/Xamarin.iOS10/Spirzza.Interop.SpirvCross.dll.config</PackagePath>
 			<Pack>true</Pack>
 		</Content>
-		<Content Include="build/MonoAndroid10/SpirvCross.targets">
-			<PackagePath>build/MonoAndroid10/SpirvCross.targets</PackagePath>
+		<Content Include="build/MonoAndroid10/Spirzza.Interop.SpirvCross.targets">
+			<PackagePath>build/MonoAndroid10/Spirzza.Interop.SpirvCross.targets</PackagePath>
 			<Pack>true</Pack>
 		</Content>
-		<Content Include="build/net40/SpirvCross.targets">
-			<PackagePath>build/net40/SpirvCross.targets</PackagePath>
+		<Content Include="build/net40/Spirzza.Interop.SpirvCross.targets">
+			<PackagePath>build/net40/Spirzza.Interop.SpirvCross.targets</PackagePath>
 			<Pack>true</Pack>
 		</Content>
 	</ItemGroup>
