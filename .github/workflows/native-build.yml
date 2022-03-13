@@ -164,49 +164,49 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: win-x64
-          path: build_binaries/
+          path: build_binaries/win-x64/
 
       - name: Download win-x86
         uses: actions/download-artifact@v2
         with:
           name: win-x86
-          path: build_binaries/
+          path: build_binaries/win-x86/
 
       - name: Download android-arm64-v8a
         uses: actions/download-artifact@v2
         with:
           name: android-arm64-v8a
-          path: build_binaries/
+          path: build_binaries/android-arm64-v8a/
 
       - name: Download android-x86_64
         uses: actions/download-artifact@v2
         with:
           name: android-x86_64
-          path: build_binaries/
+          path: build_binaries/android-x86_64/
 
       - name: Download android-armeabi-v7a
         uses: actions/download-artifact@v2
         with:
           name: android-armeabi-v7a
-          path: build_binaries/
+          path: build_binaries/android-armeabi-v7a/
 
       - name: Download linux-x64
         uses: actions/download-artifact@v2
         with:
           name: linux-x64
-          path: build_binaries/
+          path: build_binaries/linux-x64/
 
       - name: Download osx-universal
         uses: actions/download-artifact@v2
         with:
           name: osx-universal
-          path: build_binaries/
+          path: build_binaries/osx-universal/
 
       - name: Download ios
         uses: actions/download-artifact@v2
         with:
           name: ios
-          path: build_binaries/
+          path: build_binaries/ios/
           
           
       - name: List $RUNNER_WORKSPACE after build
