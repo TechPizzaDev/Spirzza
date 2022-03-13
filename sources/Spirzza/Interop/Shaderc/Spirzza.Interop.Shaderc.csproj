@@ -6,7 +6,7 @@
 		<LangVersion>9.0</LangVersion>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<NativeAssetsPath Condition="'$(NativeAssetsPath)' == ''">$(RepositoryRootDirectory)/build_binaries/</NativeAssetsPath>
+		<NativeAssetsPath Condition="'$(NativeAssetsPath)' == ''">$(RepositoryRootDirectory)/build_binaries</NativeAssetsPath>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -34,14 +34,14 @@
 
 	<Target Name="BeforePackage" BeforeTargets="AssignTargetPaths">
 		<ItemGroup>
-			<_NativeAssetName Include="$(Configuration)/win-x86/shaderc_shared.dll" PackagePath="runtimes/win-x86/native" />
-			<_NativeAssetName Include="$(Configuration)/win-x64/shaderc_shared.dll" PackagePath="runtimes/win-x64/native" />
-			<_NativeAssetName Include="$(Configuration)/linux-x64/libshaderc_shared.so" PackagePath="runtimes/linux-x64/native" />
-			<_NativeAssetName Include="$(Configuration)/osx-universal/libshaderc_shared.dylib" PackagePath="runtimes/osx-universal/native" />
-			<_NativeAssetName Include="$(Configuration)/ios/libshaderc_combined.a" PackagePath="build/Xamarin.iOS10/native" />
-			<_NativeAssetName Include="$(Configuration)/android-arm64-v8a/libshaderc_shared.so" PackagePath="build/MonoAndroid10/native/arm64-v8a" />
-			<_NativeAssetName Include="$(Configuration)/android-armeabi-v7a/libshaderc_shared.so" PackagePath="build/MonoAndroid10/native/armeabi-v7a" />
-			<_NativeAssetName Include="$(Configuration)/android-x86_64/libshaderc_shared.so" PackagePath="build/MonoAndroid10/native/x86_64" />
+			<_NativeAssetName Include="win-x86/shaderc_shared.dll" PackagePath="runtimes/win-x86/native" />
+			<_NativeAssetName Include="win-x64/shaderc_shared.dll" PackagePath="runtimes/win-x64/native" />
+			<_NativeAssetName Include="linux-x64/libshaderc_shared.so" PackagePath="runtimes/linux-x64/native" />
+			<_NativeAssetName Include="osx-universal/libshaderc_shared.dylib" PackagePath="runtimes/osx-universal/native" />
+			<_NativeAssetName Include="ios/libshaderc_combined.a" PackagePath="build/Xamarin.iOS10/native" />
+			<_NativeAssetName Include="android-arm64-v8a/libshaderc_shared.so" PackagePath="build/MonoAndroid10/native/arm64-v8a" />
+			<_NativeAssetName Include="android-armeabi-v7a/libshaderc_shared.so" PackagePath="build/MonoAndroid10/native/armeabi-v7a" />
+			<_NativeAssetName Include="android-x86_64/libshaderc_shared.so" PackagePath="build/MonoAndroid10/native/x86_64" />
 
 			<_ExistingAssets Include="@(_NativeAssetName)" Condition="Exists('$(NativeAssetsPath)/%(Identity)')" />
 
