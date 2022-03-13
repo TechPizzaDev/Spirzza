@@ -138,6 +138,7 @@ jobs:
   managed_build:
     runs-on: ubuntu-latest
     needs: native_builds
+    if: always() 
 
     steps:
       - uses: actions/checkout@v2
