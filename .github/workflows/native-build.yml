@@ -228,7 +228,7 @@ jobs:
         run: dotnet test sources/Spirzza/Interop/Spirzza.Interop.sln -c Release --no-restore --no-build
        
       - name: Pack
-        run: dotnet pack sources/Spirzza/Interop/Spirzza.Interop.sln -c Release --no-restore --no-build --verbosity normal
+        run: dotnet pack sources/Spirzza/Interop/Spirzza.Interop.sln -c Release --no-restore --verbosity normal
 
       - name: Upload NuGet artifact
         uses: actions/upload-artifact@v2
