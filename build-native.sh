@@ -76,7 +76,7 @@ cmake --build . --config $_CMakeBuildType
 popd
 
 if [[ $_CombinedStatic != "" ]]; then
-    _CombineStaticSources = find $_CombinedStatic -maxdepth 1 -type f -name *.a |  tr '\n' ' '
+    _CombineStaticSources=$(find $_CombinedStatic -maxdepth 1 -type f -name *.a | tr '\n' ' ')
     libtool -static -o $_ArtifactName $_CombineStaticSources
 fi
 
