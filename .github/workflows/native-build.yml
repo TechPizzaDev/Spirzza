@@ -135,6 +135,10 @@ jobs:
           ClangSharpPInvokeGenerator --file-directory submodules/shaderc/libshaderc/include --include-directory submodules/shaderc/libshaderc/include "@scripts/GenerateShaderc.rsp"
           ClangSharpPInvokeGenerator --file-directory submodules/SPIRV-Cross --include-directory submodules/SPIRV-Cross "@scripts/GenerateSpirvCross.rsp"
           
+      - name: List $RUNNER_WORKSPACE after build
+        run: find $RUNNER_WORKSPACE
+        shell: bash
+          
       - name: Upload source artifacts
         if: ${{ matrix.create_sources }}
         uses: actions/upload-artifact@v2
