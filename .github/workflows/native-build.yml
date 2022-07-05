@@ -63,7 +63,7 @@ jobs:
             cmake_args_shaderc:     $CMAKE_ARGS_2
             
           - os: macos-latest
-            build_target: ios
+            build_target: ios_2
             args_spirv_cross: ios --artifact-name build/SPIRV-Cross/Release-iphoneos/libspirv-cross-c.a           --out-dir $OUT_DIR
             args_shaderc:     ios --artifact-name build/shaderc/libshaderc/Release-iphoneos/libshaderc_combined.a --out-dir $OUT_DIR
             cmake_args_spirv_cross: -DSPIRV_CROSS_STATIC=ON -DSPIRV_CROSS_SHARED=OFF -DSPIRV_CROSS_CLI=OFF
