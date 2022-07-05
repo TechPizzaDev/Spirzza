@@ -63,8 +63,8 @@ jobs:
             cmake_args_shaderc:     $CMAKE_ARGS_2
             
           - os: macos-latest
-            build_target: ios_2
-            args_spirv_cross: ios --artifact-name build/SPIRV-Cross/Release-iphoneos/libspirv-cross-c.a           --out-dir $OUT_DIR
+            build_target: ios_3
+            args_spirv_cross: ios --artifact-name build/SPIRV-Cross/Release-iphoneos/libspirv-cross_combined.a    --out-dir $OUT_DIR --combined-static build/SPIRV-Cross/Release-iphoneos
             args_shaderc:     ios --artifact-name build/shaderc/libshaderc/Release-iphoneos/libshaderc_combined.a --out-dir $OUT_DIR
             cmake_args_spirv_cross: -DSPIRV_CROSS_STATIC=ON -DSPIRV_CROSS_SHARED=OFF -DSPIRV_CROSS_CLI=OFF
             cmake_args_shaderc:     -DCMAKE_POLICY_DEFAULT_CMP0006=OLD -DCMAKE_POLICY_DEFAULT_CMP0077=NEW -DENABLE_HLSL=ON -DENABLE_OPT=ON -DENABLE_GLSLANG_BINARIES=OFF -DSPIRV_SKIP_EXECUTABLES=ON -DSHADERC_SKIP_TESTS=ON -DSHADERC_SKIP_EXAMPLES=ON -DSHADERC_SKIP_INSTALL=ON
@@ -96,7 +96,7 @@ jobs:
         env:
           OUT_DIR: build_binaries
           MODULE_ARGS_1: --submodule SPIRV-Cross --build-type Release
-          MODULE_ARGS_2: --submodule shaderc --build-type Release
+          MODULE_ARGS_2: --submodule shaderc     --build-type Release
           CMAKE_ARGS_1: -DSPIRV_CROSS_STATIC=OFF -DSPIRV_CROSS_SHARED=ON -DSPIRV_CROSS_CLI=OFF
           CMAKE_ARGS_2: -DENABLE_HLSL=ON -DENABLE_OPT=ON -DENABLE_GLSLANG_BINARIES=OFF -DSPIRV_SKIP_EXECUTABLES=ON -DSHADERC_SKIP_TESTS=ON -DSHADERC_SKIP_EXAMPLES=ON -DSHADERC_SKIP_INSTALL=ON
           

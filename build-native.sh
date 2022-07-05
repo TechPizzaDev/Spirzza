@@ -11,6 +11,7 @@ _CMakeGenerator=
 _Submodule=
 _ArtifactName=
 _OutDir=
+_CombinedStatic=
 
 while :; do
     if [ $# -le 0 ]; then
@@ -49,6 +50,10 @@ while :; do
             _CMakeOsxArchitectures=$2
             shift
             ;;
+        --combined-static)
+            _CombinedStatic=$2
+            shift
+            ;;
         *)
             __UnprocessedBuildArgs="$__UnprocessedBuildArgs $1"
     esac
@@ -69,5 +74,10 @@ pushd $_OutputPath
 cmake ../../submodules/$_Submodule -DCMAKE_BUILD_TYPE=$_CMakeBuildType $_CMakeArgs $_CMakeGenerator $_CMakeToolchain $_CMakePlatform $_CMakeEnableBitcode -DPYTHON_EXECUTABLE=$_PythonExePath -DCMAKE_OSX_ARCHITECTURES="$_CMakeOsxArchitectures"
 cmake --build . --config $_CMakeBuildType
 popd
+
+if [[ $_CombinedStatic != "" ]]; then
+    _CombineStaticSources = find $_CombinedStatic -maxdepth 1 -type f -name *.a |  tr '\n' ' '
+    libtool -static -o $_ArtifactName $_CombineStaticSources
+fi
 
 cp $_ArtifactName $_OutDir
