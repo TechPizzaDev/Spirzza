@@ -6,7 +6,6 @@
 		<LangVersion>9.0</LangVersion>
 		<IncludeSymbols>false</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<NativeAssetsPath Condition="'$(NativeAssetsPath)' == ''">$(RepositoryRootDirectory)/artifacts/natives</NativeAssetsPath>
 	</PropertyGroup>
 
 	<ItemGroup>

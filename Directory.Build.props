@@ -64,4 +64,8 @@
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <NativeAssetsPath>$(RepositoryRootDirectory)/artifacts/natives</NativeAssetsPath>
+  </PropertyGroup>
+
 </Project>
