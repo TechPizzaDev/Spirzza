@@ -162,6 +162,7 @@ jobs:
           ClangSharpPInvokeGenerator --file-directory submodules/SPIRV-Cross --include-directory submodules/SPIRV-Cross "@scripts/GenerateSpirvCross.rsp"
           
       - name: List $RUNNER_WORKSPACE after build
+        if: ${{ vars.ACTIONS_STEP_DEBUG }}
         run: find $RUNNER_WORKSPACE
         shell: bash
           
@@ -243,6 +244,7 @@ jobs:
           path: artifacts/natives/ios/
           
       - name: List $RUNNER_WORKSPACE after build
+        if: ${{ vars.ACTIONS_STEP_DEBUG }}
         run: find $RUNNER_WORKSPACE
         shell: bash
         
