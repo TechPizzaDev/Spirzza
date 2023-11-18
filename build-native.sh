@@ -9,8 +9,6 @@ _CMakeEnableBitcode=
 _CMakeOsxArchitectures=
 _CMakeGenerator=
 _Submodule=
-_ArtifactName=
-_OutDir=
 _CombinedStatic=
 
 while :; do
@@ -30,14 +28,6 @@ while :; do
             ;;
 		--submodule)
             _Submodule=$2
-            shift
-            ;;
-		--artifact-name)
-            _ArtifactName=$2
-            shift
-            ;;
-		--out-dir)
-            _OutDir=$2
             shift
             ;;
         ios)
@@ -77,7 +67,5 @@ popd
 
 if [[ $_CombinedStatic != "" ]]; then
     _CombineStaticSources=$(find $_CombinedStatic -maxdepth 1 -type f -name *.a | tr '\n' ' ')
-    libtool -static -o $_ArtifactName $_CombineStaticSources
+    libtool -static -o $_CombinedStatic/$(_Submodule)_combined.a $_CombineStaticSources
 fi
-
-cp $_ArtifactName $_OutDir

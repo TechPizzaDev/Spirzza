@@ -6,7 +6,7 @@
 		<LangVersion>9.0</LangVersion>
 		<IncludeSymbols>false</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<NativeAssetsPath Condition="'$(NativeAssetsPath)' == ''">$(RepositoryRootDirectory)/build_binaries</NativeAssetsPath>
+		<NativeAssetsPath Condition="'$(NativeAssetsPath)' == ''">$(RepositoryRootDirectory)/artifacts/natives</NativeAssetsPath>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -35,10 +35,10 @@
 	<Target Name="BeforePackage" BeforeTargets="AssignTargetPaths">
 		<ItemGroup>
 			<_NativeAssetName Include="win-x86/spirv-cross-c-shared.dll" PackagePath="runtimes/win-x86/native" />
-			<_NativeAssetName Include="win-x64/spirv-cross-c-shared.dll" PackagePath="runtimes/win-x64/native" />
-			<_NativeAssetName Include="linux-x64/libspirv-cross-c-shared.so" PackagePath="runtimes/linux-x64/native" />
+            <_NativeAssetName Include="win-x64/spirv-cross-c-shared.dll" PackagePath="runtimes/win-x64/native" />
+            <_NativeAssetName Include="linux-x64/libspirv-cross-c-shared.so" PackagePath="runtimes/linux-x64/native" />
 			<_NativeAssetName Include="osx-universal/libspirv-cross-c-shared.dylib" PackagePath="runtimes/osx-universal/native" />
-			<_NativeAssetName Include="ios/libspirv-cross_combined.a" PackagePath="build/Xamarin.iOS10/native" />
+			<_NativeAssetName Include="ios/SPIRV-Cross_combined.a" PackagePath="build/Xamarin.iOS10/native" />
 			<_NativeAssetName Include="android-arm64-v8a/libspirv-cross-c-shared.so" PackagePath="build/MonoAndroid10/native/arm64-v8a" />
 			<_NativeAssetName Include="android-armeabi-v7a/libspirv-cross-c-shared.so" PackagePath="build/MonoAndroid10/native/armeabi-v7a" />
 			<_NativeAssetName Include="android-x86_64/libspirv-cross-c-shared.so" PackagePath="build/MonoAndroid10/native/x86_64" />
