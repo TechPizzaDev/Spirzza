@@ -39,7 +39,7 @@
             <_NativeAssetName Include="win-arm64/spirv-cross-c-shared.dll" PackagePath="runtimes/win-arm64/native" />
             <_NativeAssetName Include="linux-x64/libspirv-cross-c-shared.so" PackagePath="runtimes/linux-x64/native" />
 			<_NativeAssetName Include="osx-universal/libspirv-cross-c-shared.dylib" PackagePath="runtimes/osx-universal/native" />
-			<_NativeAssetName Include="ios/SPIRV-Cross_combined.a" PackagePath="build/Xamarin.iOS10/native" />
+			<_NativeAssetName Include="ios/libspirv-cross_combined.a" PackagePath="build/Xamarin.iOS10/native" />
 			<_NativeAssetName Include="android-arm64-v8a/libspirv-cross-c-shared.so" PackagePath="build/MonoAndroid10/native/arm64-v8a" />
 			<_NativeAssetName Include="android-armeabi-v7a/libspirv-cross-c-shared.so" PackagePath="build/MonoAndroid10/native/armeabi-v7a" />
 			<_NativeAssetName Include="android-x86_64/libspirv-cross-c-shared.so" PackagePath="build/MonoAndroid10/native/x86_64" />

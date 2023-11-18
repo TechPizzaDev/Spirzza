@@ -2,6 +2,8 @@ name: Native build
 on:
   create: # when tags are created
   workflow_dispatch: # clickable button in CI manager
+env:
+  OUT_DIR: artifacts/natives
 
 jobs:
   native_builds:
@@ -15,82 +17,64 @@ jobs:
           - os: windows-latest
             build_target: win-x64
             create_sources: true
-            artifact_spirv_cross: build/SPIRV-Cross/Release/spirv-cross-c-shared.dll 
-            artifact_shaderc:     build/shaderc/libshaderc/Release/shaderc_shared.dll
-            args_spirv_cross: win-x64
-            args_shaderc:     win-x64
+            args_spirv_cross: win-x64 --artifact-name build/SPIRV-Cross/Release/spirv-cross-c-shared.dll 
+            args_shaderc:     win-x64 --artifact-name build/shaderc/libshaderc/Release/shaderc_shared.dll
             cmake_args_spirv_cross: $CMAKE_ARGS_1
             cmake_args_shaderc:     $CMAKE_ARGS_2
             
           - os: windows-latest
             build_target: win-x86
-            artifact_spirv_cross: build/SPIRV-Cross/Release/spirv-cross-c-shared.dll 
-            artifact_shaderc:     build/shaderc/libshaderc/Release/shaderc_shared.dll
-            args_spirv_cross: win-x86 
-            args_shaderc:     win-x86 
+            args_spirv_cross: win-x86 --artifact-name build/SPIRV-Cross/Release/spirv-cross-c-shared.dll 
+            args_shaderc:     win-x86 --artifact-name build/shaderc/libshaderc/Release/shaderc_shared.dll
             cmake_args_spirv_cross: $CMAKE_ARGS_1
             cmake_args_shaderc:     $CMAKE_ARGS_2
             
           - os: windows-latest
             build_target: win-arm64
-            artifact_spirv_cross: build/SPIRV-Cross/Release/spirv-cross-c-shared.dll 
-            artifact_shaderc:     build/shaderc/libshaderc/Release/shaderc_shared.dll
-            args_spirv_cross: win-arm64 
-            args_shaderc:     win-arm64 
+            args_spirv_cross: win-arm64 --artifact-name build/SPIRV-Cross/Release/spirv-cross-c-shared.dll 
+            args_shaderc:     win-arm64 --artifact-name build/shaderc/libshaderc/Release/shaderc_shared.dll
             cmake_args_spirv_cross: $CMAKE_ARGS_1
             cmake_args_shaderc:     $CMAKE_ARGS_2
             
           - os: windows-latest
             build_target: android-arm64-v8a
-            artifact_spirv_cross: build/SPIRV-Cross/libspirv-cross-c-shared.so 
-            artifact_shaderc:     build/shaderc/libshaderc/libshaderc_shared.so
-            args_spirv_cross: --android-abi arm64-v8a --android-ndk '%ANDROID_NDK_HOME%' 
-            args_shaderc:     --android-abi arm64-v8a --android-ndk '%ANDROID_NDK_HOME%' 
+            args_spirv_cross: --android-abi arm64-v8a --artifact-name build/SPIRV-Cross/libspirv-cross-c-shared.so  --android-ndk '%ANDROID_NDK_HOME%' 
+            args_shaderc:     --android-abi arm64-v8a --artifact-name build/shaderc/libshaderc/libshaderc_shared.so --android-ndk '%ANDROID_NDK_HOME%' 
             cmake_args_spirv_cross: $CMAKE_ARGS_1
             cmake_args_shaderc:     $CMAKE_ARGS_2
             
-          - os: windows-latest
+          - os: windows-latest 
             build_target: android-armeabi-v7a
-            artifact_spirv_cross: build/SPIRV-Cross/libspirv-cross-c-shared.so 
-            artifact_shaderc:     build/shaderc/libshaderc/libshaderc_shared.so
-            args_spirv_cross: --android-abi armeabi-v7a --android-ndk '%ANDROID_NDK_HOME%' 
-            args_shaderc:     --android-abi armeabi-v7a --android-ndk '%ANDROID_NDK_HOME%'
+            args_spirv_cross: --android-abi armeabi-v7a --artifact-name build/SPIRV-Cross/libspirv-cross-c-shared.so  --android-ndk '%ANDROID_NDK_HOME%' 
+            args_shaderc:     --android-abi armeabi-v7a --artifact-name build/shaderc/libshaderc/libshaderc_shared.so --android-ndk '%ANDROID_NDK_HOME%'
             cmake_args_spirv_cross: $CMAKE_ARGS_1
             cmake_args_shaderc:     $CMAKE_ARGS_2
             
           - os: windows-latest
             build_target: android-x86_64
-            artifact_spirv_cross: build/SPIRV-Cross/libspirv-cross-c-shared.so 
-            artifact_shaderc:     build/shaderc/libshaderc/libshaderc_shared.so
-            args_spirv_cross: --android-abi x86_64 --android-ndk '%ANDROID_NDK_HOME%' 
-            args_shaderc:     --android-abi x86_64 --android-ndk '%ANDROID_NDK_HOME%' 
+            args_spirv_cross: --android-abi x86_64 --artifact-name build/SPIRV-Cross/libspirv-cross-c-shared.so  --android-ndk '%ANDROID_NDK_HOME%' 
+            args_shaderc:     --android-abi x86_64 --artifact-name build/shaderc/libshaderc/libshaderc_shared.so --android-ndk '%ANDROID_NDK_HOME%' 
             cmake_args_spirv_cross: $CMAKE_ARGS_1
             cmake_args_shaderc:     $CMAKE_ARGS_2
             
           - os: ubuntu-latest
             build_target: linux-x64
-            artifact_spirv_cross: build/SPIRV-Cross/libspirv-cross-c-shared.so 
-            artifact_shaderc:     build/shaderc/libshaderc/libshaderc_shared.so
-            args_spirv_cross: ''
-            args_shaderc:     ''
+            args_spirv_cross: --artifact-name build/SPIRV-Cross/libspirv-cross-c-shared.so 
+            args_shaderc:     --artifact-name build/shaderc/libshaderc/libshaderc_shared.so
             cmake_args_spirv_cross: $CMAKE_ARGS_1
             cmake_args_shaderc:     $CMAKE_ARGS_2
             
           - os: macos-latest
             build_target: osx-universal
-            artifact_spirv_cross: build/SPIRV-Cross/libspirv-cross-c-shared.dylib 
-            artifact_shaderc:     build/shaderc/libshaderc/libshaderc_shared.dylib
-            args_spirv_cross: --osx-archs 'arm64;x86_64'
-            args_shaderc:     --osx-archs 'arm64;x86_64'
+            args_spirv_cross: --osx-archs 'arm64;x86_64' --artifact-name build/SPIRV-Cross/libspirv-cross-c-shared.dylib 
+            args_shaderc:     --osx-archs 'arm64;x86_64' --artifact-name build/shaderc/libshaderc/libshaderc_shared.dylib
             cmake_args_spirv_cross: $CMAKE_ARGS_1
             cmake_args_shaderc:     $CMAKE_ARGS_2
             
           - os: macos-latest
             build_target: ios
-            artifact_spirv_cross: build/SPIRV-Cross/Release-iphoneos/SPIRV-Cross_combined.a
-            artifact_shaderc:     build/shaderc/libshaderc/Release-iphoneos/libshaderc_combined.a
-            args_spirv_cross: ios --combined-static build/SPIRV-Cross/Release-iphoneos
-            args_shaderc:     ios 
+            args_spirv_cross: ios --artifact-name build/SPIRV-Cross/Release-iphoneos/libspirv-cross_combined.a    --combined-static build/SPIRV-Cross/Release-iphoneos
+            args_shaderc:     ios --artifact-name build/shaderc/libshaderc/Release-iphoneos/libshaderc_combined.a
             cmake_args_spirv_cross: -DSPIRV_CROSS_STATIC=ON -DSPIRV_CROSS_SHARED=OFF -DSPIRV_CROSS_CLI=OFF
             cmake_args_shaderc:     -DCMAKE_POLICY_DEFAULT_CMP0006=OLD -DCMAKE_POLICY_DEFAULT_CMP0077=NEW -DENABLE_HLSL=ON -DENABLE_OPT=ON -DENABLE_GLSLANG_BINARIES=OFF -DSPIRV_SKIP_EXECUTABLES=ON -DSHADERC_SKIP_TESTS=ON -DSHADERC_SKIP_EXAMPLES=ON -DSHADERC_SKIP_INSTALL=ON
 
@@ -103,9 +87,7 @@ jobs:
         uses: actions/cache@v3
         id: cache-native-libraries
         with:
-          path: |
-            ${{ matrix.artifact_spirv_cross }}
-            ${{ matrix.artifact_shaderc }}
+          path: ${{ env.OUT_DIR }}/
           key: |
             ${{ matrix.build_target }}-${{ hashFiles('.git/modules/submodules/*/refs/heads/*') }}
           restore-keys: |
@@ -126,12 +108,13 @@ jobs:
           CMAKE_ARGS_2: -DENABLE_HLSL=ON -DENABLE_OPT=ON -DENABLE_GLSLANG_BINARIES=OFF -DSPIRV_SKIP_EXECUTABLES=ON -DSHADERC_SKIP_TESTS=ON -DSHADERC_SKIP_EXAMPLES=ON -DSHADERC_SKIP_INSTALL=ON
           
         run:  |
+              mkdir -p $OUT_DIR
               if [ "$RUNNER_OS" == "Windows" ]; then
-                ./build-native.cmd ${{ matrix.args_spirv_cross }} $MODULE_ARGS_1 --cmake-args "${{ matrix.cmake_args_spirv_cross }}"
-                ./build-native.cmd ${{ matrix.args_shaderc }}     $MODULE_ARGS_2 --cmake-args "${{ matrix.cmake_args_shaderc }}"
+                ./build-native.cmd ${{ matrix.args_spirv_cross }} $MODULE_ARGS_1 --out-dir $OUT_DIR --cmake-args "${{ matrix.cmake_args_spirv_cross }}"
+                ./build-native.cmd ${{ matrix.args_shaderc }}     $MODULE_ARGS_2 --out-dir $OUT_DIR --cmake-args "${{ matrix.cmake_args_shaderc }}"
               else
-                ./build-native.sh  ${{ matrix.args_spirv_cross }} $MODULE_ARGS_1 --cmake-args "${{ matrix.cmake_args_spirv_cross }}"
-                ./build-native.sh  ${{ matrix.args_shaderc }}     $MODULE_ARGS_2 --cmake-args "${{ matrix.cmake_args_shaderc }}"
+                ./build-native.sh  ${{ matrix.args_spirv_cross }} $MODULE_ARGS_1 --out-dir $OUT_DIR --cmake-args "${{ matrix.cmake_args_spirv_cross }}"
+                ./build-native.sh  ${{ matrix.args_shaderc }}     $MODULE_ARGS_2 --out-dir $OUT_DIR --cmake-args "${{ matrix.cmake_args_shaderc }}"
               fi
         shell: bash
 
@@ -139,9 +122,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.build_target }}
-          path: |
-            ${{ matrix.artifact_spirv_cross }}
-            ${{ matrix.artifact_shaderc }}
+          path: ${{ env.OUT_DIR }}/
           if-no-files-found: error
       
       - name: Setup .NET
@@ -193,55 +174,55 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: win-x64
-          path: artifacts/natives/win-x64/
+          path: ${{ env.OUT_DIR }}/win-x64/
           
       - name: Download win-x86
         uses: actions/download-artifact@v3
         with:
           name: win-x86
-          path: artifacts/natives/win-x86/
+          path: ${{ env.OUT_DIR }}/win-x86/
           
       - name: Download win-arm64
         uses: actions/download-artifact@v3
         with:
           name: win-arm64
-          path: artifacts/natives/win-arm64/
+          path: ${{ env.OUT_DIR }}/win-arm64/
 
       - name: Download android-arm64-v8a
         uses: actions/download-artifact@v3
         with:
           name: android-arm64-v8a
-          path: artifacts/natives/android-arm64-v8a/
+          path: ${{ env.OUT_DIR }}/android-arm64-v8a/
 
       - name: Download android-x86_64
         uses: actions/download-artifact@v3
         with:
           name: android-x86_64
-          path: artifacts/natives/android-x86_64/
+          path: ${{ env.OUT_DIR }}/android-x86_64/
 
       - name: Download android-armeabi-v7a
         uses: actions/download-artifact@v3
         with:
           name: android-armeabi-v7a
-          path: artifacts/natives/android-armeabi-v7a/
+          path: ${{ env.OUT_DIR }}/android-armeabi-v7a/
 
       - name: Download linux-x64
         uses: actions/download-artifact@v3
         with:
           name: linux-x64
-          path: artifacts/natives/linux-x64/
+          path: ${{ env.OUT_DIR }}/linux-x64/
 
       - name: Download osx-universal
         uses: actions/download-artifact@v3
         with:
           name: osx-universal
-          path: artifacts/natives/osx-universal/
+          path: ${{ env.OUT_DIR }}/osx-universal/
 
       - name: Download ios
         uses: actions/download-artifact@v3
         with:
           name: ios
-          path: artifacts/natives/ios/
+          path: ${{ env.OUT_DIR }}/ios/
           
       - name: List $RUNNER_WORKSPACE after build
         if: ${{ vars.ACTIONS_STEP_DEBUG }}

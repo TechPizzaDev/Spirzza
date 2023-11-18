@@ -4,6 +4,8 @@
 set _CMAKE_BUILD_TYPE=Debug
 set _BUILD_ARCH=x64
 set _SUBMODULE=
+set _ARTIFACT_NAME=
+set _OUT_DIR=
 set _CMAKE_GENERATOR_PLATFORM=x64
 set _NDK_DIR=
 set _ANDROID_ABI=arm64-v8a
@@ -17,6 +19,8 @@ if /i [%1] == [win-x86] (set _BUILD_ARCH=x86&& set _CMAKE_GENERATOR_PLATFORM=Win
 if /i [%1] == [win-arm64] (set _BUILD_ARCH=arm64&& set _CMAKE_GENERATOR_PLATFORM=arm64&& shift & goto ArgLoop)
 if /i [%1] == [--build-type] (set _CMAKE_BUILD_TYPE=%2&& shift && shift & goto ArgLoop)
 if /i [%1] == [--cmake-args] (set _CMAKE_ARGS=%2&& shift && shift & goto ArgLoop)
+if /i [%1] == [--artifact-name] (set _ARTIFACT_NAME=%2&& shift && shift & goto ArgLoop)
+if /i [%1] == [--out-dir] (set _OUT_DIR=%2&& shift && shift & goto ArgLoop)
 if /i [%1] == [--android-ndk] (set _NDK_DIR=%2&& shift && shift & goto ArgLoop)
 if /i [%1] == [--android-abi] (set _ANDROID_ABI=%2&& set _BUILD_ARCH=%2&& shift && shift & goto ArgLoop)
 if /i [%1] == [--submodule] (set _SUBMODULE=%2&& shift && shift & goto ArgLoop)
@@ -44,6 +48,8 @@ pushd %_BUILD_DIR%
 cmake ..\..\submodules\%_SUBMODULE% -DCMAKE_BUILD_TYPE=%_CMAKE_BUILD_TYPE% %_CMAKE_ARGS:"=% %_CMAKE_PLATFORM_ARGS% 
 cmake --build . --config %_CMAKE_BUILD_TYPE%
 popd
+
+cp %_ARTIFACT_NAME% %_OUT_DIR%
 
 :Success
 exit /b 0
