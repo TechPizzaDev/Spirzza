@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-		<TargetFramework>netstandard2.0</TargetFramework>
+		<TargetFrameworks>netstandard2.0;net6.0;net7.0;net8.0</TargetFrameworks>
 		<LangVersion>9.0</LangVersion>
 		<IncludeSymbols>false</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -10,7 +10,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="System.Memory" Version="4.5.4" />
+		<PackageReference Include="System.Memory" />
+        <PackageReference Include="PolySharp" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -44,7 +45,7 @@
 			<_NativeAssetName Include="android-armeabi-v7a/libshaderc_shared.so" PackagePath="build/MonoAndroid10/native/armeabi-v7a" />
 			<_NativeAssetName Include="android-x86_64/libshaderc_shared.so" PackagePath="build/MonoAndroid10/native/x86_64" />
 
-			<_ExistingAssets Include="@(_NativeAssetName)"  />
+			<_ExistingAssets Include="@(_NativeAssetName)" />
 
 			<Content Include="@(_ExistingAssets->'$(NativeAssetsPath)/%(Identity)')" CopyToOutputDirectory="PreserveNewest" PackagePath="%(PackagePath)" Pack="true" />
 		</ItemGroup>

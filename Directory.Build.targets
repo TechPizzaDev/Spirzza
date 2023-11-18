@@ -33,9 +33,11 @@
 
   <!-- Package versions for package references across all projects -->
   <ItemGroup>
-    <PackageReference Update="Microsoft.NET.Test.Sdk" Version="17.0.0" />
-    <PackageReference Update="NUnit" Version="3.13.2" />
-    <PackageReference Update="NUnit3TestAdapter" Version="4.0.0" />
+    <PackageReference Update="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Update="NUnit" Version="3.14.0" />
+    <PackageReference Update="NUnit3TestAdapter" Version="4.5.0" />
+	<PackageReference Update="System.Memory" Version="4.5.5" />
+	<PackageReference Update="PolySharp" Version="1.13.2" />
   </ItemGroup>
 
 </Project>
