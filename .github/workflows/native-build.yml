@@ -94,7 +94,9 @@ jobs:
         uses: actions/cache@v3
         id: cache-native-libraries
         with:
-          path: build_binaries
+          path: |
+            ${{ matrix.artifact_spirv_cross }}
+            ${{ matrix.artifact_shaderc }}
           key: |
             ${{ matrix.build_target }}-${{ hashFiles('.git/modules/submodules/*/refs/heads/*') }}
           restore-keys: |
