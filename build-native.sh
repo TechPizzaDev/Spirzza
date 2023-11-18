@@ -67,5 +67,5 @@ popd
 
 if [[ $_CombinedStatic != "" ]]; then
     _CombineStaticSources=$(find $_CombinedStatic -maxdepth 1 -type f -name *.a | tr '\n' ' ')
-    libtool -static -o $_CombinedStatic/$(_Submodule)_combined.a $_CombineStaticSources
+    libtool -static -o $_CombinedStatic/$($_Submodule)_combined.a $_CombineStaticSources
 fi
