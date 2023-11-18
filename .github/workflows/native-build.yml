@@ -32,6 +32,15 @@ jobs:
             cmake_args_shaderc:     $CMAKE_ARGS_2
             
           - os: windows-latest
+            build_target: win-arm64
+            artifact_spirv_cross: build/SPIRV-Cross/Release/spirv-cross-c-shared.dll 
+            artifact_shaderc:     build/shaderc/libshaderc/Release/shaderc_shared.dll
+            args_spirv_cross: win-arm64 
+            args_shaderc:     win-arm64 
+            cmake_args_spirv_cross: $CMAKE_ARGS_1
+            cmake_args_shaderc:     $CMAKE_ARGS_2
+            
+          - os: windows-latest
             build_target: android-arm64-v8a
             artifact_spirv_cross: build/SPIRV-Cross/libspirv-cross-c-shared.so 
             artifact_shaderc:     build/shaderc/libshaderc/libshaderc_shared.so
@@ -191,6 +200,12 @@ jobs:
           name: win-x86
           path: artifacts/natives/win-x86/
           
+      - name: Download win-arm64
+        uses: actions/download-artifact@v3
+        with:
+          name: win-arm64
+          path: artifacts/natives/win-arm64/
+
       - name: Download android-arm64-v8a
         uses: actions/download-artifact@v3
         with:

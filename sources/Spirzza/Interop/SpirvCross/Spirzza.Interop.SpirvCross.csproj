@@ -36,6 +36,7 @@
 		<ItemGroup>
 			<_NativeAssetName Include="win-x86/spirv-cross-c-shared.dll" PackagePath="runtimes/win-x86/native" />
             <_NativeAssetName Include="win-x64/spirv-cross-c-shared.dll" PackagePath="runtimes/win-x64/native" />
+            <_NativeAssetName Include="win-arm64/spirv-cross-c-shared.dll" PackagePath="runtimes/win-arm64/native" />
             <_NativeAssetName Include="linux-x64/libspirv-cross-c-shared.so" PackagePath="runtimes/linux-x64/native" />
 			<_NativeAssetName Include="osx-universal/libspirv-cross-c-shared.dylib" PackagePath="runtimes/osx-universal/native" />
 			<_NativeAssetName Include="ios/SPIRV-Cross_combined.a" PackagePath="build/Xamarin.iOS10/native" />
