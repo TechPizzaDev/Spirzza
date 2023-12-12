@@ -16,7 +16,6 @@ jobs:
         include:
           - os: windows-latest
             build_target: win-x64
-            create_sources: true
             args_spirv_cross: win-x64 --artifact-name build/SPIRV-Cross/Release/spirv-cross-c-shared.dll 
             args_shaderc:     win-x64 --artifact-name build/shaderc/libshaderc/Release/shaderc_shared.dll
             cmake_args_spirv_cross: $CMAKE_ARGS_1
@@ -124,38 +123,6 @@ jobs:
           name: ${{ matrix.build_target }}
           path: ${{ env.OUT_DIR }}/
           if-no-files-found: error
-      
-      - name: Setup .NET
-        if: ${{ matrix.create_sources }}
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '8.0.x'
-      
-      - name: Install .NET tools
-        if: ${{ matrix.create_sources }}
-        run: dotnet tool install --global ClangSharpPInvokeGenerator --version 16.0.0
-          
-      - name: Create sources
-        if: ${{ matrix.create_sources }}
-        continue-on-error: true
-        run: | 
-          ClangSharpPInvokeGenerator --file-directory submodules/shaderc/libshaderc/include --include-directory submodules/shaderc/libshaderc/include "@scripts/GenerateShaderc.rsp"
-          ClangSharpPInvokeGenerator --file-directory submodules/SPIRV-Cross --include-directory submodules/SPIRV-Cross "@scripts/GenerateSpirvCross.rsp"
-          
-      - name: List $RUNNER_WORKSPACE after build
-        if: ${{ vars.ACTIONS_STEP_DEBUG }}
-        run: find $RUNNER_WORKSPACE
-        shell: bash
-          
-      - name: Upload source artifacts
-        if: ${{ matrix.create_sources }}
-        uses: actions/upload-artifact@v3
-        with:
-          name: sources
-          path: |
-            sources/
-            tests/
-          if-no-files-found: error
 
 
   managed_build:
@@ -164,87 +131,33 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Download source artifacts
+      
+      - name: Download artifacts
         uses: actions/download-artifact@v3
         with:
-          name: sources
+          path: ${{ env.OUT_DIR }}/
           
-      - name: Download win-x64
-        uses: actions/download-artifact@v3
-        with:
-          name: win-x64
-          path: ${{ env.OUT_DIR }}/win-x64/
-          
-      - name: Download win-x86
-        uses: actions/download-artifact@v3
-        with:
-          name: win-x86
-          path: ${{ env.OUT_DIR }}/win-x86/
-          
-      - name: Download win-arm64
-        uses: actions/download-artifact@v3
-        with:
-          name: win-arm64
-          path: ${{ env.OUT_DIR }}/win-arm64/
-
-      - name: Download android-arm64-v8a
-        uses: actions/download-artifact@v3
-        with:
-          name: android-arm64-v8a
-          path: ${{ env.OUT_DIR }}/android-arm64-v8a/
-
-      - name: Download android-x86_64
-        uses: actions/download-artifact@v3
-        with:
-          name: android-x86_64
-          path: ${{ env.OUT_DIR }}/android-x86_64/
-
-      - name: Download android-armeabi-v7a
-        uses: actions/download-artifact@v3
-        with:
-          name: android-armeabi-v7a
-          path: ${{ env.OUT_DIR }}/android-armeabi-v7a/
-
-      - name: Download linux-x64
-        uses: actions/download-artifact@v3
-        with:
-          name: linux-x64
-          path: ${{ env.OUT_DIR }}/linux-x64/
-
-      - name: Download osx-universal
-        uses: actions/download-artifact@v3
-        with:
-          name: osx-universal
-          path: ${{ env.OUT_DIR }}/osx-universal/
-
-      - name: Download ios
-        uses: actions/download-artifact@v3
-        with:
-          name: ios
-          path: ${{ env.OUT_DIR }}/ios/
-          
-      - name: List $RUNNER_WORKSPACE after build
+      - name: List $RUNNER_WORKSPACE
         if: ${{ vars.ACTIONS_STEP_DEBUG }}
         run: find $RUNNER_WORKSPACE
         shell: bash
         
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
       
       - name: Restore
-        run: dotnet restore sources/Spirzza/Interop/Spirzza.Interop.sln
+        run: dotnet restore
         
       - name: Build
-        run: dotnet build sources/Spirzza/Interop/Spirzza.Interop.sln -c Release --no-restore 
+        run: dotnet build -c Release --no-restore 
         
       - name: Test
-        run: dotnet test sources/Spirzza/Interop/Spirzza.Interop.sln -c Release --no-restore --no-build
+        run: dotnet test -c Release --no-restore --no-build
        
       - name: Pack
-        run: dotnet pack sources/Spirzza/Interop/Spirzza.Interop.sln -c Release --no-restore --verbosity normal
+        run: dotnet pack -c Release --no-restore --verbosity normal
 
       - name: Upload NuGet artifact
         uses: actions/upload-artifact@v3

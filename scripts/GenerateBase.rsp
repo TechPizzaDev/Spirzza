@@ -1,8 +1,9 @@
 --config
-compatible-codegen
+latest-codegen
 generate-macro-bindings
 generate-tests-nunit
 multi-file
 unix-types
 generate-helper-types
 log-potential-typedef-remappings
+log-visited-files
