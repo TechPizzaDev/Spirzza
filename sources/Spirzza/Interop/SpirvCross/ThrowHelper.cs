@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Spirzza;
+namespace Spirzza.Interop.SpirvCross;
 
 internal static class ThrowHelper
 {

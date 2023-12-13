@@ -12,9 +12,10 @@
 
     <!-- Default settings that are used by other settings -->
     <PropertyGroup>
-        <BaseArtifactsPath>$(MSBuildThisFileDirectory)artifacts/</BaseArtifactsPath>
+        <RepositoryRootDirectory>$(MSBuildThisFileDirectory)</RepositoryRootDirectory>
+        <BaseArtifactsPath>$(RepositoryRootDirectory)artifacts/</BaseArtifactsPath>
         <BaseArtifactsPathSuffix>$(SpirzzaProjectCategory)/$(MSBuildProjectName)</BaseArtifactsPathSuffix>
-        <RepositoryUrl>https://github.com/TechnologicalPizza/Spirzza</RepositoryUrl>
+        <RepositoryUrl>https://github.com/TechPizzaDev/Spirzza</RepositoryUrl>
     </PropertyGroup>
 
     <!-- Default settings that explicitly differ from the Sdk.props defaults  -->
@@ -27,7 +28,6 @@
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <SignAssembly>false</SignAssembly>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-        <RepositoryRootDirectory>$(MSBuildThisFileDirectory)</RepositoryRootDirectory>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">

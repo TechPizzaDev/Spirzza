@@ -3,13 +3,64 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.Interop.Shaderc", "Shaderc\Spirzza.Interop.Shaderc.csproj", "{43E92EF9-45FD-4B92-8895-3B38772DA7B1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{59795C79-2211-4A12-8DB6-4BB8DCBBB93D}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		.gitmodules = .gitmodules
+		build-native.cmd = build-native.cmd
+		build-native.sh = build-native.sh
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		generate_sources.ps1 = generate_sources.ps1
+		LICENSE = LICENSE
+	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.Interop.SpirvCross", "SpirvCross\Spirzza.Interop.SpirvCross.csproj", "{99431A36-92C8-4D72-8116-3B0333C820A5}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interop", "Interop", "{E00D8DF2-B8D1-4B3F-9E87-440107D1339B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.InteropTests.Shaderc", "..\..\..\tests\Spirzza.Tests\InteropTests\Shaderc\Spirzza.InteropTests.Shaderc.csproj", "{4D7FA143-CD17-4B3D-B030-E978ACF958E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.Interop.Shaderc", "sources\Spirzza\Interop\Shaderc\Spirzza.Interop.Shaderc.csproj", "{26577877-335F-4634-B995-180DB8436C97}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.InteropTests.SpirvCross", "..\..\..\tests\Spirzza.Tests\InteropTests\SpirvCross\Spirzza.InteropTests.SpirvCross.csproj", "{AB08B435-CA03-4681-B941-81A92DAC2790}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.Interop.SpirvCross", "sources\Spirzza\Interop\SpirvCross\Spirzza.Interop.SpirvCross.csproj", "{F7668439-C2DC-41D1-B4C4-15500C15A085}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{6BB4D1EA-1E96-4DC0-BA16-5F1C4D99261D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{F8EDC3BE-29AE-4048-B453-BF7E7B38679A}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\native-build.yml = .github\workflows\native-build.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sources", "sources", "{4FBDB06B-4EF3-4BFC-834C-58220A27843D}"
+	ProjectSection(SolutionItems) = preProject
+		sources\Directory.Build.props = sources\Directory.Build.props
+		sources\Directory.Build.targets = sources\Directory.Build.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B53FE1DD-A9B8-49D6-9E34-9E2B44034A18}"
+	ProjectSection(SolutionItems) = preProject
+		tests\Directory.Build.props = tests\Directory.Build.props
+		tests\Directory.Build.targets = tests\Directory.Build.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interop", "Interop", "{5BC78B54-5F45-44B1-B10B-D9EA705F5829}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{B58A4957-4141-4BE7-A1C6-5D81ECB447EA}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\GenerateBase.rsp = scripts\GenerateBase.rsp
+		scripts\GenerateShaderc.rsp = scripts\GenerateShaderc.rsp
+		scripts\GenerateSpirvCross.rsp = scripts\GenerateSpirvCross.rsp
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.Interop.Shaderc.Tests", "tests\Spirzza\Interop\Shaderc\Spirzza.Interop.Shaderc.Tests.csproj", "{68FC9AFB-2B4C-416A-B497-4F0AE0D04C68}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.Interop.SpirvCross.Tests", "tests\Spirzza\Interop\SpirvCross\Spirzza.Interop.SpirvCross.Tests.csproj", "{F1056F72-52F2-4174-A3E2-B8C083EFD499}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Spirzza", "Spirzza", "{CD3814F0-0F0F-42CD-A504-E1DC52FA59AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Spirzza", "Spirzza", "{8EC527D0-2932-48CC-9FCA-09856ABAE2A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ios", "ios", "{C78018CD-3EBE-4A48-A000-E88FEA5CF34B}"
+	ProjectSection(SolutionItems) = preProject
+		ios\ios.toolchain.cmake = ios\ios.toolchain.cmake
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,25 +68,36 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{43E92EF9-45FD-4B92-8895-3B38772DA7B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{43E92EF9-45FD-4B92-8895-3B38772DA7B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{43E92EF9-45FD-4B92-8895-3B38772DA7B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{43E92EF9-45FD-4B92-8895-3B38772DA7B1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{99431A36-92C8-4D72-8116-3B0333C820A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{99431A36-92C8-4D72-8116-3B0333C820A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{99431A36-92C8-4D72-8116-3B0333C820A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{99431A36-92C8-4D72-8116-3B0333C820A5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4D7FA143-CD17-4B3D-B030-E978ACF958E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4D7FA143-CD17-4B3D-B030-E978ACF958E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4D7FA143-CD17-4B3D-B030-E978ACF958E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4D7FA143-CD17-4B3D-B030-E978ACF958E1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AB08B435-CA03-4681-B941-81A92DAC2790}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AB08B435-CA03-4681-B941-81A92DAC2790}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AB08B435-CA03-4681-B941-81A92DAC2790}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AB08B435-CA03-4681-B941-81A92DAC2790}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26577877-335F-4634-B995-180DB8436C97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26577877-335F-4634-B995-180DB8436C97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26577877-335F-4634-B995-180DB8436C97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26577877-335F-4634-B995-180DB8436C97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7668439-C2DC-41D1-B4C4-15500C15A085}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7668439-C2DC-41D1-B4C4-15500C15A085}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7668439-C2DC-41D1-B4C4-15500C15A085}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7668439-C2DC-41D1-B4C4-15500C15A085}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68FC9AFB-2B4C-416A-B497-4F0AE0D04C68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68FC9AFB-2B4C-416A-B497-4F0AE0D04C68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68FC9AFB-2B4C-416A-B497-4F0AE0D04C68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68FC9AFB-2B4C-416A-B497-4F0AE0D04C68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1056F72-52F2-4174-A3E2-B8C083EFD499}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1056F72-52F2-4174-A3E2-B8C083EFD499}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1056F72-52F2-4174-A3E2-B8C083EFD499}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1056F72-52F2-4174-A3E2-B8C083EFD499}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E00D8DF2-B8D1-4B3F-9E87-440107D1339B} = {CD3814F0-0F0F-42CD-A504-E1DC52FA59AF}
+		{26577877-335F-4634-B995-180DB8436C97} = {E00D8DF2-B8D1-4B3F-9E87-440107D1339B}
+		{F7668439-C2DC-41D1-B4C4-15500C15A085} = {E00D8DF2-B8D1-4B3F-9E87-440107D1339B}
+		{F8EDC3BE-29AE-4048-B453-BF7E7B38679A} = {6BB4D1EA-1E96-4DC0-BA16-5F1C4D99261D}
+		{5BC78B54-5F45-44B1-B10B-D9EA705F5829} = {8EC527D0-2932-48CC-9FCA-09856ABAE2A3}
+		{68FC9AFB-2B4C-416A-B497-4F0AE0D04C68} = {5BC78B54-5F45-44B1-B10B-D9EA705F5829}
+		{F1056F72-52F2-4174-A3E2-B8C083EFD499} = {5BC78B54-5F45-44B1-B10B-D9EA705F5829}
+		{CD3814F0-0F0F-42CD-A504-E1DC52FA59AF} = {4FBDB06B-4EF3-4BFC-834C-58220A27843D}
+		{8EC527D0-2932-48CC-9FCA-09856ABAE2A3} = {B53FE1DD-A9B8-49D6-9E34-9E2B44034A18}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5F7EF1F1-69C6-4C1A-8EDD-B3BB651CDFB4}
