@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="../NativePackage.props" />
+
+    <ItemGroup>
+        <Content Include="$(NativeAssetsPath)/osx-universal/libshaderc_shared.dylib" PackagePath="runtimes/osx/native" />
+    </ItemGroup>
+
+</Project>

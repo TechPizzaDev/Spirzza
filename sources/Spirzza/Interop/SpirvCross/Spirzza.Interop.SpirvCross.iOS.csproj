@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="../NativePackage.props" />
+
+    <ItemGroup>
+        <Content Include="$(NativeAssetsPath)/ios/libspirv-cross_combined.a" PackagePath="runtimes/ios/native" />
+    </ItemGroup>
+
+</Project>

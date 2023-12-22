@@ -1,54 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net7.0;net8.0</TargetFrameworks>
-        <LangVersion>10</LangVersion>
-        <IncludeSymbols>false</IncludeSymbols>
-        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <PackageReference Include="PolySharp" />
-    </ItemGroup>
-
-    <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-        <PackageReference Include="System.Memory" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <Content Include="build/Xamarin.iOS10/Spirzza.Interop.Shaderc.targets">
-            <PackagePath>build/Xamarin.iOS10/Spirzza.Interop.Shaderc.targets</PackagePath>
-            <Pack>true</Pack>
-        </Content>
-        <Content Include="build/Xamarin.iOS10/Spirzza.Interop.Shaderc.dll.config">
-            <PackagePath>build/Xamarin.iOS10/Spirzza.Interop.Shaderc.dll.config</PackagePath>
-            <Pack>true</Pack>
-        </Content>
-        <Content Include="build/MonoAndroid10/Spirzza.Interop.Shaderc.targets">
-            <PackagePath>build/MonoAndroid10/Spirzza.Interop.Shaderc.targets</PackagePath>
-            <Pack>true</Pack>
-        </Content>
-        <Content Include="build/net40/Spirzza.Interop.Shaderc.targets">
-            <PackagePath>build/net40/Spirzza.Interop.Shaderc.targets</PackagePath>
-            <Pack>true</Pack>
-        </Content>
-    </ItemGroup>
-
-    <ItemGroup>
-        <_NativeAssetName Include="win-x86/shaderc_shared.dll" PackagePath="runtimes/win-x86/native" />
-        <_NativeAssetName Include="win-x64/shaderc_shared.dll" PackagePath="runtimes/win-x64/native" />
-        <_NativeAssetName Include="win-arm64/shaderc_shared.dll" PackagePath="runtimes/win-arm64/native" />
-        <_NativeAssetName Include="linux-x64/libshaderc_shared.so" PackagePath="runtimes/linux-x64/native" />
-        <_NativeAssetName Include="osx-universal/libshaderc_shared.dylib" PackagePath="runtimes/osx-universal/native" />
-        <_NativeAssetName Include="ios/libshaderc_combined.a" PackagePath="build/Xamarin.iOS10/native" />
-        <_NativeAssetName Include="android-arm64-v8a/libshaderc_shared.so" PackagePath="build/MonoAndroid10/native/arm64-v8a" />
-        <_NativeAssetName Include="android-armeabi-v7a/libshaderc_shared.so" PackagePath="build/MonoAndroid10/native/armeabi-v7a" />
-        <_NativeAssetName Include="android-x86_64/libshaderc_shared.so" PackagePath="build/MonoAndroid10/native/x86_64" />
-
-        <_ExistingAssets Include="@(_NativeAssetName)" />
-
-        <Content Include="@(_ExistingAssets->'$(NativeAssetsPath)/%(Identity)')" PackagePath="%(PackagePath)" Pack="true" />
-    </ItemGroup>
+    <Import Project="../NativeProject.props" />
 
 </Project>

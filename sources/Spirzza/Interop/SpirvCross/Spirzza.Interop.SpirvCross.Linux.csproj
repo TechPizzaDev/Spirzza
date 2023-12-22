@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="../NativePackage.props" />
+
+    <ItemGroup>
+        <Content Include="$(NativeAssetsPath)/linux-x64/libspirv-cross-c-shared.so" PackagePath="runtimes/linux-x64/native" />
+    </ItemGroup>
+
+</Project>
