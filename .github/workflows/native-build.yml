@@ -64,16 +64,30 @@ jobs:
             cmake_args_shaderc:     $CMAKE_ARGS_2
             
           - os: macos-latest
-            build_target: osx-universal
-            args_spirv_cross: --osx-archs 'arm64;x86_64' --artifact-name build/SPIRV-Cross/libspirv-cross-c-shared.dylib 
-            args_shaderc:     --osx-archs 'arm64;x86_64' --artifact-name build/shaderc/libshaderc/libshaderc_shared.dylib
+            build_target: osx-x64
+            args_spirv_cross: --artifact-name build/SPIRV-Cross/libspirv-cross-c-shared.dylib 
+            args_shaderc:     --artifact-name build/shaderc/libshaderc/libshaderc_shared.dylib
+            cmake_args_spirv_cross: $CMAKE_ARGS_1
+            cmake_args_shaderc:     $CMAKE_ARGS_2
+
+          - os: macos-latest
+            build_target: osx-arm64
+            args_spirv_cross: --artifact-name build/SPIRV-Cross/libspirv-cross-c-shared.dylib 
+            args_shaderc:     --artifact-name build/shaderc/libshaderc/libshaderc_shared.dylib
             cmake_args_spirv_cross: $CMAKE_ARGS_1
             cmake_args_shaderc:     $CMAKE_ARGS_2
             
           - os: macos-latest
-            build_target: ios
-            args_spirv_cross: ios --artifact-name build/SPIRV-Cross/Release-iphoneos/libspirv-cross_combined.a    --combined-static build/SPIRV-Cross/Release-iphoneos
-            args_shaderc:     ios --artifact-name build/shaderc/libshaderc/Release-iphoneos/libshaderc_combined.a
+            build_target: ios-arm64
+            args_spirv_cross: ios --platform OS64 --artifact-name build/SPIRV-Cross/Release-iphoneos/libspirv-cross_combined.a    --combined-static build/SPIRV-Cross/Release-iphoneos
+            args_shaderc:     ios --platform OS64 --artifact-name build/shaderc/libshaderc/Release-iphoneos/libshaderc_combined.a
+            cmake_args_spirv_cross: -DSPIRV_CROSS_STATIC=ON -DSPIRV_CROSS_SHARED=OFF -DSPIRV_CROSS_CLI=OFF
+            cmake_args_shaderc:     -DCMAKE_POLICY_DEFAULT_CMP0006=OLD -DCMAKE_POLICY_DEFAULT_CMP0077=NEW -DENABLE_HLSL=ON -DENABLE_OPT=ON -DENABLE_GLSLANG_BINARIES=OFF -DSPIRV_SKIP_EXECUTABLES=ON -DSHADERC_SKIP_TESTS=ON -DSHADERC_SKIP_EXAMPLES=ON -DSHADERC_SKIP_INSTALL=ON
+            
+          - os: macos-latest
+            build_target: iossimulator-arm64
+            args_spirv_cross: ios --platform SIMULATOR64 --artifact-name build/SPIRV-Cross/Release-iphonesimulator/libspirv-cross_combined.a    --combined-static build/SPIRV-Cross/Release-iphonesimulator
+            args_shaderc:     ios --platform SIMULATOR64 --artifact-name build/shaderc/libshaderc/Release-iphonesimulator/libshaderc_combined.a
             cmake_args_spirv_cross: -DSPIRV_CROSS_STATIC=ON -DSPIRV_CROSS_SHARED=OFF -DSPIRV_CROSS_CLI=OFF
             cmake_args_shaderc:     -DCMAKE_POLICY_DEFAULT_CMP0006=OLD -DCMAKE_POLICY_DEFAULT_CMP0077=NEW -DENABLE_HLSL=ON -DENABLE_OPT=ON -DENABLE_GLSLANG_BINARIES=OFF -DSPIRV_SKIP_EXECUTABLES=ON -DSHADERC_SKIP_TESTS=ON -DSHADERC_SKIP_EXAMPLES=ON -DSHADERC_SKIP_INSTALL=ON
 
@@ -116,9 +130,14 @@ jobs:
                 ./build-native.sh  ${{ matrix.args_shaderc }}     $MODULE_ARGS_2 --out-dir $OUT_DIR --cmake-args "${{ matrix.cmake_args_shaderc }}"
               fi
         shell: bash
+        
+      - name: List $RUNNER_WORKSPACE
+        if: ${{ vars.ACTIONS_STEP_DEBUG }}
+        run: find $RUNNER_WORKSPACE
+        shell: bash
 
       - name: Upload native library artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.build_target }}
           path: ${{ env.OUT_DIR }}/

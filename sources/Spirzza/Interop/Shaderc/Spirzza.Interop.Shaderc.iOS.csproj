@@ -3,7 +3,8 @@
     <Import Project="../NativePackage.props" />
 
     <ItemGroup>
-        <Content Include="$(NativeAssetsPath)/ios/libshaderc_combined.a" PackagePath="runtimes/ios/native" />
+        <Content Include="$(NativeAssetsPath)/ios-arm64/libshaderc_combined.a" PackagePath="runtimes/ios-arm64/native" />
+        <Content Include="$(NativeAssetsPath)/iossimulator-x64/libshaderc_combined.a" PackagePath="runtimes/iossimulator-x64/native" />
     </ItemGroup>
 
 </Project>

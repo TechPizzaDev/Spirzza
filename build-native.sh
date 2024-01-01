@@ -4,9 +4,7 @@ scriptPath="$( cd "$(dirname "$0")" ; pwd -P )"
 _CMakeBuildType=Debug
 _CMakeArgs=
 _CMakeToolchain=
-_CMakeIOSPlatform=
 _CMakeEnableBitcode=
-_CMakeOsxArchitectures=
 _CMakeGenerator=
 _Submodule=
 _ArtifactName=
@@ -42,12 +40,11 @@ while :; do
             ;;
         ios)
             _CMakeToolchain=-DCMAKE_TOOLCHAIN_FILE=$scriptPath/ios/ios.toolchain.cmake
-            _CMakePlatform=-DPLATFORM=OS64COMBINED
             _CMakeEnableBitcode=-DENABLE_BITCODE=0
-            _CMakeGenerator="-G Xcode -T buildsystem=1"
+            _CMakeGenerator="-G Xcode"
             ;;
-        --osx-archs)
-            _CMakeOsxArchitectures=$2
+        --platform)
+            _CMakePlatform=-DPLATFORM=$2
             shift
             ;;
         --combined-static)
@@ -71,7 +68,7 @@ fi
 
 mkdir -p $_OutputPath
 pushd $_OutputPath
-cmake ../../submodules/$_Submodule -DCMAKE_BUILD_TYPE=$_CMakeBuildType $_CMakeArgs $_CMakeGenerator $_CMakeToolchain $_CMakePlatform $_CMakeEnableBitcode -DPYTHON_EXECUTABLE=$_PythonExePath -DCMAKE_OSX_ARCHITECTURES="$_CMakeOsxArchitectures"
+cmake ../../submodules/$_Submodule -DCMAKE_BUILD_TYPE=$_CMakeBuildType $_CMakeArgs $_CMakeGenerator $_CMakeToolchain $_CMakePlatform $_CMakeEnableBitcode -DPYTHON_EXECUTABLE=$_PythonExePath
 cmake --build . --config $_CMakeBuildType
 popd
 
@@ -80,4 +77,4 @@ if [[ $_CombinedStatic != "" ]]; then
     libtool -static -o $_ArtifactName $_CombineStaticSources
 fi
 
-cp $_ArtifactName $_OutDir
+cp -v $_ArtifactName $_OutDir
