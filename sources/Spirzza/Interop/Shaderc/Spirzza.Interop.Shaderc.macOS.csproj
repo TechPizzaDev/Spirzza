@@ -3,7 +3,8 @@
     <Import Project="../NativePackage.props" />
 
     <ItemGroup>
-        <Content Include="$(NativeAssetsPath)/osx-universal/libshaderc_shared.dylib" PackagePath="runtimes/osx/native" />
+        <Content Include="$(NativeAssetsPath)/osx-x64/libshaderc_shared.dylib" PackagePath="runtimes/osx-x64/native" />
+        <Content Include="$(NativeAssetsPath)/osx-arm64/libshaderc_shared.dylib" PackagePath="runtimes/osx-arm64/native" />
     </ItemGroup>
 
 </Project>
