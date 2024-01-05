@@ -108,10 +108,7 @@ jobs:
         id: cache-native-libraries
         with:
           path: ${{ env.OUT_DIR }}/
-          key: |
-            ${{ matrix.build_target }}-${{ hashFiles('.git/modules/submodules/*/refs/heads/*') }}
-          restore-keys: |
-            ${{ matrix.build_target }}-${{ hashFiles('.git/modules/submodules/*/refs/heads/*') }}
+          key: ${{ matrix.build_target }}-${{ hashFiles('.git/modules/submodules/*/refs/heads/*') }}
         
       - name: Sync Third Party
         if: steps.cache-native-libraries.outputs.cache-hit != 'true'
