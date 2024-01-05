@@ -12,6 +12,10 @@ _Submodule=
 _ArtifactName=
 _OutDir=
 _CombinedStatic=
+_CMakeSystemProcessor=
+_CMakeCCompiler=
+_CMakeCxxCompiler=
+_CMakeFindRootPathMode=
 
 while :; do
     if [ $# -le 0 ]; then
@@ -41,13 +45,17 @@ while :; do
             shift
             ;;
         --ios)
-            _CMakeToolchain=-DCMAKE_TOOLCHAIN_FILE=$scriptPath/ios/ios.toolchain.cmake
+            _CMakeToolchain=-DCMAKE_TOOLCHAIN_FILE=$scriptPath/toolchains/ios.toolchain.cmake
             _CMakeEnableBitcode=-DENABLE_BITCODE=0
             _CMakeGenerator="-G Xcode"
             _CMakeIosPlatform=-DPLATFORM=$2
             ;;
         --osx)
             _CMakeOsxArchitectures=-DCMAKE_OSX_ARCHITECTURES="$2"
+            shift
+            ;;
+        --linux)
+            _CMakeToolchain=-DCMAKE_TOOLCHAIN_FILE=$scriptPath/toolchains/aarch64-linux-gnu.toolchain.cmake
             shift
             ;;
         --combined-static)
@@ -71,7 +79,7 @@ fi
 
 mkdir -p $_OutputPath
 pushd $_OutputPath
-cmake ../../submodules/$_Submodule -DCMAKE_BUILD_TYPE=$_CMakeBuildType $_CMakeArgs $_CMakeGenerator $_CMakeToolchain $_CMakeIosPlatform $_CMakeEnableBitcode -DPYTHON_EXECUTABLE=$_PythonExePath $_CMakeOsxArchitectures
+cmake ../../submodules/$_Submodule -DCMAKE_BUILD_TYPE=$_CMakeBuildType $_CMakeArgs $_CMakeGenerator $_CMakeToolchain $_CMakeIosPlatform $_CMakeEnableBitcode -DPYTHON_EXECUTABLE=$_PythonExePath $_CMakeOsxArchitectures $_CMakeSystemProcessor $_CMakeCCompiler $_CMakeCxxCompiler $_CMakeFindRootPathMode
 cmake --build . --config $_CMakeBuildType
 popd
 

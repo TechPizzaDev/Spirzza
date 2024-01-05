@@ -63,6 +63,13 @@ jobs:
             cmake_args_spirv_cross: $CMAKE_ARGS_1
             cmake_args_shaderc:     $CMAKE_ARGS_2
             
+          - os: ubuntu-latest
+            build_target: linux-arm64
+            args_spirv_cross: --linux aarch64 --artifact-name build/SPIRV-Cross/libspirv-cross-c-shared.so 
+            args_shaderc:     --linux aarch64 --artifact-name build/shaderc/libshaderc/libshaderc_shared.so
+            cmake_args_spirv_cross: $CMAKE_ARGS_1
+            cmake_args_shaderc:     $CMAKE_ARGS_2
+            
           - os: macos-latest
             build_target: osx-x64
             args_spirv_cross: --osx x86_64 --artifact-name build/SPIRV-Cross/libspirv-cross-c-shared.dylib 
@@ -110,6 +117,14 @@ jobs:
         if: steps.cache-native-libraries.outputs.cache-hit != 'true'
         working-directory: submodules/shaderc
         run: ./utils/git-sync-deps
+        shell: bash
+        
+      - name: Get ARM64 toolchain
+        if: ${{ steps.cache-native-libraries.outputs.cache-hit != 'true' && matrix.build_target == 'linux-arm64' }}
+        run: |
+             sudo apt-get update
+             sudo apt-get install gcc-aarch64-linux-gnu
+             sudo apt install g++-aarch64-linux-gnu
         shell: bash
         
       - name: Build native libraries

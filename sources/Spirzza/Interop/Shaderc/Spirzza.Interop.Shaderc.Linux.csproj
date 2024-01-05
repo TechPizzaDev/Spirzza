@@ -4,6 +4,7 @@
 
     <ItemGroup>
         <Content Include="$(NativeAssetsPath)/linux-x64/libshaderc_shared.so" PackagePath="runtimes/linux-x64/native" />
+        <Content Include="$(NativeAssetsPath)/linux-arm64/libshaderc_shared.so" PackagePath="runtimes/linux-arm64/native" />
     </ItemGroup>
 
 </Project>
