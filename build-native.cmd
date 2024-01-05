@@ -16,6 +16,7 @@ set _ANDROID_PLATFORM=android-16
 if [%1] == [] goto LocateVS
 if /i [%1] == [win-x64] (set _BUILD_ARCH=x64&& set _CMAKE_GENERATOR_PLATFORM=x64&& shift & goto ArgLoop)
 if /i [%1] == [win-x86] (set _BUILD_ARCH=x86&& set _CMAKE_GENERATOR_PLATFORM=Win32&& shift & goto ArgLoop)
+if /i [%1] == [win-arm64] (set _BUILD_ARCH=arm64&& set _CMAKE_GENERATOR_PLATFORM=arm64&& shift & goto ArgLoop)
 if /i [%1] == [--build-type] (set _CMAKE_BUILD_TYPE=%2&& shift && shift & goto ArgLoop)
 if /i [%1] == [--cmake-args] (set _CMAKE_ARGS=%2&& shift && shift & goto ArgLoop)
 if /i [%1] == [--artifact-name] (set _ARTIFACT_NAME=%2&& shift && shift & goto ArgLoop)

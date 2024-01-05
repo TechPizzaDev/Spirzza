@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="../NativePackage.props" />
+
+    <ItemGroup>
+        <Content Include="$(NativeAssetsPath)/android-arm64-v8a/libspirv-cross-c-shared.so" PackagePath="runtimes/android-arm64/native" />
+        <Content Include="$(NativeAssetsPath)/android-armeabi-v7a/libspirv-cross-c-shared.so" PackagePath="runtimes/android-arm/native" />
+        <Content Include="$(NativeAssetsPath)/android-x86_64/libspirv-cross-c-shared.so" PackagePath="runtimes/android-x64/native" />
+    </ItemGroup>
+
+</Project>

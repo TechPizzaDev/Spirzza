@@ -4,14 +4,18 @@ scriptPath="$( cd "$(dirname "$0")" ; pwd -P )"
 _CMakeBuildType=Debug
 _CMakeArgs=
 _CMakeToolchain=
-_CMakeIOSPlatform=
 _CMakeEnableBitcode=
 _CMakeOsxArchitectures=
 _CMakeGenerator=
+_CMakeIosPlatform=
 _Submodule=
 _ArtifactName=
 _OutDir=
 _CombinedStatic=
+_CMakeSystemProcessor=
+_CMakeCCompiler=
+_CMakeCxxCompiler=
+_CMakeFindRootPathMode=
 
 while :; do
     if [ $# -le 0 ]; then
@@ -40,14 +44,18 @@ while :; do
             _OutDir=$2
             shift
             ;;
-        ios)
-            _CMakeToolchain=-DCMAKE_TOOLCHAIN_FILE=$scriptPath/ios/ios.toolchain.cmake
-            _CMakePlatform=-DPLATFORM=OS64COMBINED
+        --ios)
+            _CMakeToolchain=-DCMAKE_TOOLCHAIN_FILE=$scriptPath/toolchains/ios.toolchain.cmake
             _CMakeEnableBitcode=-DENABLE_BITCODE=0
-            _CMakeGenerator="-G Xcode -T buildsystem=1"
+            _CMakeGenerator="-G Xcode"
+            _CMakeIosPlatform=-DPLATFORM=$2
             ;;
-        --osx-archs)
-            _CMakeOsxArchitectures=$2
+        --osx)
+            _CMakeOsxArchitectures=-DCMAKE_OSX_ARCHITECTURES="$2"
+            shift
+            ;;
+        --linux)
+            _CMakeToolchain=-DCMAKE_TOOLCHAIN_FILE=$scriptPath/toolchains/aarch64-linux-gnu.toolchain.cmake
             shift
             ;;
         --combined-static)
@@ -71,7 +79,7 @@ fi
 
 mkdir -p $_OutputPath
 pushd $_OutputPath
-cmake ../../submodules/$_Submodule -DCMAKE_BUILD_TYPE=$_CMakeBuildType $_CMakeArgs $_CMakeGenerator $_CMakeToolchain $_CMakePlatform $_CMakeEnableBitcode -DPYTHON_EXECUTABLE=$_PythonExePath -DCMAKE_OSX_ARCHITECTURES="$_CMakeOsxArchitectures"
+cmake ../../submodules/$_Submodule -DCMAKE_BUILD_TYPE=$_CMakeBuildType $_CMakeArgs $_CMakeGenerator $_CMakeToolchain $_CMakeIosPlatform $_CMakeEnableBitcode -DPYTHON_EXECUTABLE=$_PythonExePath $_CMakeOsxArchitectures $_CMakeSystemProcessor $_CMakeCCompiler $_CMakeCxxCompiler $_CMakeFindRootPathMode
 cmake --build . --config $_CMakeBuildType
 popd
 
@@ -80,4 +88,4 @@ if [[ $_CombinedStatic != "" ]]; then
     libtool -static -o $_ArtifactName $_CombineStaticSources
 fi
 
-cp $_ArtifactName $_OutDir
+cp -v $_ArtifactName $_OutDir

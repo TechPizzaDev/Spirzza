@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="../NativePackage.props" />
+
+    <ItemGroup>
+        <Content Include="$(NativeAssetsPath)/osx-x64/libspirv-cross-c-shared.dylib" PackagePath="runtimes/osx-x64/native" />
+        <Content Include="$(NativeAssetsPath)/osx-arm64/libspirv-cross-c-shared.dylib" PackagePath="runtimes/osx-arm64/native" />
+    </ItemGroup>
+
+</Project>

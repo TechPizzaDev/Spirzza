@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+
+    <PropertyGroup>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net7.0;net8.0</TargetFrameworks>
+        <LangVersion>10</LangVersion>
+        <IncludeSymbols>false</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="PolySharp" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+        <PackageReference Include="System.Memory" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="$(MSBuildProjectName).iOS.csproj" Condition="$(TargetFramework.Contains('-ios'))" />
+        <ProjectReference Include="$(MSBuildProjectName).Android.csproj" Condition="$(TargetFramework.Contains('-android'))" />
+        <ProjectReference Include="$(MSBuildProjectName).macOS.csproj" Condition="$(TargetFramework.Contains('-macos')) or !$(TargetFramework.Contains('-'))" />
+        <ProjectReference Include="$(MSBuildProjectName).Win32.csproj" Condition="$(TargetFramework.Contains('-windows')) or !$(TargetFramework.Contains('-'))" />
+        <ProjectReference Include="$(MSBuildProjectName).Linux.csproj" Condition="!$(TargetFramework.Contains('-'))" />
+    </ItemGroup>
+    
+</Project>

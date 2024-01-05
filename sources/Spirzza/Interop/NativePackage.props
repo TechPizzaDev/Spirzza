@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <HasPlatformVersionInfo>false</HasPlatformVersionInfo>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Remove="**/*.cs" />
+        
+        <TfmSpecificPackageFile Include="../_._" PackagePath="lib/$(TargetFramework)/_._" Pack="true" />
+    </ItemGroup>
+    
+</Project>

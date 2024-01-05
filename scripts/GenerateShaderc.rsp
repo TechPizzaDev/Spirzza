@@ -1,10 +1,10 @@
 @scripts/GenerateBase.rsp
 
 --output
-./sources/Spirzza/Interop/Shaderc
+./sources/Spirzza/Interop/Shaderc/Generated
 
 --test-output
-./tests/Spirzza.Tests/InteropTests/Shaderc
+./tests/Spirzza/Interop/Shaderc/PInvoke/Generated
 
 --namespace
 Spirzza.Interop.Shaderc
@@ -21,6 +21,6 @@ shaderc/visibility.h
 --methodClassName
 Shaderc
 
---with-type
+--with-transparent-struct
 shaderc_env_version=uint
 shaderc_spirv_version=uint

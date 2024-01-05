@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="../NativePackage.props" />
+
+    <ItemGroup>
+        <Content Include="$(NativeAssetsPath)/win-x86/spirv-cross-c-shared.dll" PackagePath="runtimes/win-x86/native" />
+        <Content Include="$(NativeAssetsPath)/win-x64/spirv-cross-c-shared.dll" PackagePath="runtimes/win-x64/native" />
+        <Content Include="$(NativeAssetsPath)/win-arm64/spirv-cross-c-shared.dll" PackagePath="runtimes/win-arm64/native" />
+    </ItemGroup>
+
+</Project>

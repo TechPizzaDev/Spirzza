@@ -1,10 +1,10 @@
 @scripts/GenerateBase.rsp
 
 --output
-./sources/Spirzza/Interop/SpirvCross
+./sources/Spirzza/Interop/SpirvCross/Generated
 
 --test-output
-./tests/Spirzza.Tests/InteropTests/SpirvCross
+./tests/Spirzza/Interop/SpirvCross/PInvoke/Generated
 
 --namespace
 Spirzza.Interop.SpirvCross

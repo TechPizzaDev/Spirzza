@@ -1,0 +1,186 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{59795C79-2211-4A12-8DB6-4BB8DCBBB93D}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		.gitmodules = .gitmodules
+		build-native.cmd = build-native.cmd
+		build-native.sh = build-native.sh
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		generate_sources.ps1 = generate_sources.ps1
+		LICENSE = LICENSE
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interop", "Interop", "{E00D8DF2-B8D1-4B3F-9E87-440107D1339B}"
+	ProjectSection(SolutionItems) = preProject
+		sources\Spirzza\Interop\NativePackage.props = sources\Spirzza\Interop\NativePackage.props
+		sources\Spirzza\Interop\NativeProject.props = sources\Spirzza\Interop\NativeProject.props
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.Interop.Shaderc", "sources\Spirzza\Interop\Shaderc\Spirzza.Interop.Shaderc.csproj", "{26577877-335F-4634-B995-180DB8436C97}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.Interop.SpirvCross", "sources\Spirzza\Interop\SpirvCross\Spirzza.Interop.SpirvCross.csproj", "{F7668439-C2DC-41D1-B4C4-15500C15A085}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{6BB4D1EA-1E96-4DC0-BA16-5F1C4D99261D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{F8EDC3BE-29AE-4048-B453-BF7E7B38679A}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\native-build.yml = .github\workflows\native-build.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sources", "sources", "{4FBDB06B-4EF3-4BFC-834C-58220A27843D}"
+	ProjectSection(SolutionItems) = preProject
+		sources\Directory.Build.props = sources\Directory.Build.props
+		sources\Directory.Build.targets = sources\Directory.Build.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B53FE1DD-A9B8-49D6-9E34-9E2B44034A18}"
+	ProjectSection(SolutionItems) = preProject
+		tests\Directory.Build.props = tests\Directory.Build.props
+		tests\Directory.Build.targets = tests\Directory.Build.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interop", "Interop", "{5BC78B54-5F45-44B1-B10B-D9EA705F5829}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{B58A4957-4141-4BE7-A1C6-5D81ECB447EA}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\GenerateBase.rsp = scripts\GenerateBase.rsp
+		scripts\GenerateShaderc.rsp = scripts\GenerateShaderc.rsp
+		scripts\GenerateSpirvCross.rsp = scripts\GenerateSpirvCross.rsp
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.Interop.Shaderc.Tests", "tests\Spirzza\Interop\Shaderc\Spirzza.Interop.Shaderc.Tests.csproj", "{68FC9AFB-2B4C-416A-B497-4F0AE0D04C68}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.Interop.SpirvCross.Tests", "tests\Spirzza\Interop\SpirvCross\Spirzza.Interop.SpirvCross.Tests.csproj", "{F1056F72-52F2-4174-A3E2-B8C083EFD499}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Spirzza", "Spirzza", "{CD3814F0-0F0F-42CD-A504-E1DC52FA59AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Spirzza", "Spirzza", "{8EC527D0-2932-48CC-9FCA-09856ABAE2A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shaderc", "Shaderc", "{B3A811DC-EAF6-4593-8853-BE769617961C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SpirvCross", "SpirvCross", "{13AF782A-993D-4924-9FF9-92417DA72DB1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.Interop.Shaderc.Win32", "sources\Spirzza\Interop\Shaderc\Spirzza.Interop.Shaderc.Win32.csproj", "{120A977A-74C0-44C9-A2AB-128F65E78D35}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.Interop.Shaderc.macOS", "sources\Spirzza\Interop\Shaderc\Spirzza.Interop.Shaderc.macOS.csproj", "{29C8E23B-97F3-4EFB-84B2-25AF47DDEC51}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.Interop.Shaderc.Android", "sources\Spirzza\Interop\Shaderc\Spirzza.Interop.Shaderc.Android.csproj", "{C657CCA3-4B6F-4F93-B11D-CFB96C0E57B3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.Interop.Shaderc.Linux", "sources\Spirzza\Interop\Shaderc\Spirzza.Interop.Shaderc.Linux.csproj", "{C2049032-B199-4803-BB23-47BB81D14FCC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.Interop.Shaderc.iOS", "sources\Spirzza\Interop\Shaderc\Spirzza.Interop.Shaderc.iOS.csproj", "{56FEAD30-D20D-4D99-B412-6D4790E80309}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.Interop.SpirvCross.Android", "sources\Spirzza\Interop\SpirvCross\Spirzza.Interop.SpirvCross.Android.csproj", "{3994AEAF-6621-4EB7-85ED-0411F1DFF169}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.Interop.SpirvCross.iOS", "sources\Spirzza\Interop\SpirvCross\Spirzza.Interop.SpirvCross.iOS.csproj", "{A58E7196-7CE8-4294-B63B-483E808DE58A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.Interop.SpirvCross.Linux", "sources\Spirzza\Interop\SpirvCross\Spirzza.Interop.SpirvCross.Linux.csproj", "{EE580EB5-C315-4338-89E2-C3ED96CEE031}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.Interop.SpirvCross.Win32", "sources\Spirzza\Interop\SpirvCross\Spirzza.Interop.SpirvCross.Win32.csproj", "{F94A29E0-FAD1-4F0D-8D27-3053BE820406}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.Interop.SpirvCross.macOS", "sources\Spirzza\Interop\SpirvCross\Spirzza.Interop.SpirvCross.macOS.csproj", "{805C269D-4AED-4285-84FD-FCFD6A6459E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "toolchains", "toolchains", "{C47F9D87-F2F2-4888-AF8E-AE67C1D64911}"
+	ProjectSection(SolutionItems) = preProject
+		toolchains\aarch64-linux-gnu.toolchain.cmake = toolchains\aarch64-linux-gnu.toolchain.cmake
+		toolchains\ios.toolchain.cmake = toolchains\ios.toolchain.cmake
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26577877-335F-4634-B995-180DB8436C97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26577877-335F-4634-B995-180DB8436C97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26577877-335F-4634-B995-180DB8436C97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26577877-335F-4634-B995-180DB8436C97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7668439-C2DC-41D1-B4C4-15500C15A085}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7668439-C2DC-41D1-B4C4-15500C15A085}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7668439-C2DC-41D1-B4C4-15500C15A085}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7668439-C2DC-41D1-B4C4-15500C15A085}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68FC9AFB-2B4C-416A-B497-4F0AE0D04C68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68FC9AFB-2B4C-416A-B497-4F0AE0D04C68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68FC9AFB-2B4C-416A-B497-4F0AE0D04C68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68FC9AFB-2B4C-416A-B497-4F0AE0D04C68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1056F72-52F2-4174-A3E2-B8C083EFD499}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1056F72-52F2-4174-A3E2-B8C083EFD499}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1056F72-52F2-4174-A3E2-B8C083EFD499}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1056F72-52F2-4174-A3E2-B8C083EFD499}.Release|Any CPU.Build.0 = Release|Any CPU
+		{120A977A-74C0-44C9-A2AB-128F65E78D35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{120A977A-74C0-44C9-A2AB-128F65E78D35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{120A977A-74C0-44C9-A2AB-128F65E78D35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{120A977A-74C0-44C9-A2AB-128F65E78D35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29C8E23B-97F3-4EFB-84B2-25AF47DDEC51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29C8E23B-97F3-4EFB-84B2-25AF47DDEC51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29C8E23B-97F3-4EFB-84B2-25AF47DDEC51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29C8E23B-97F3-4EFB-84B2-25AF47DDEC51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C657CCA3-4B6F-4F93-B11D-CFB96C0E57B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C657CCA3-4B6F-4F93-B11D-CFB96C0E57B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C657CCA3-4B6F-4F93-B11D-CFB96C0E57B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C657CCA3-4B6F-4F93-B11D-CFB96C0E57B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2049032-B199-4803-BB23-47BB81D14FCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2049032-B199-4803-BB23-47BB81D14FCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2049032-B199-4803-BB23-47BB81D14FCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2049032-B199-4803-BB23-47BB81D14FCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56FEAD30-D20D-4D99-B412-6D4790E80309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56FEAD30-D20D-4D99-B412-6D4790E80309}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56FEAD30-D20D-4D99-B412-6D4790E80309}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56FEAD30-D20D-4D99-B412-6D4790E80309}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3994AEAF-6621-4EB7-85ED-0411F1DFF169}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3994AEAF-6621-4EB7-85ED-0411F1DFF169}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3994AEAF-6621-4EB7-85ED-0411F1DFF169}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3994AEAF-6621-4EB7-85ED-0411F1DFF169}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A58E7196-7CE8-4294-B63B-483E808DE58A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A58E7196-7CE8-4294-B63B-483E808DE58A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A58E7196-7CE8-4294-B63B-483E808DE58A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A58E7196-7CE8-4294-B63B-483E808DE58A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE580EB5-C315-4338-89E2-C3ED96CEE031}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE580EB5-C315-4338-89E2-C3ED96CEE031}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE580EB5-C315-4338-89E2-C3ED96CEE031}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE580EB5-C315-4338-89E2-C3ED96CEE031}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F94A29E0-FAD1-4F0D-8D27-3053BE820406}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F94A29E0-FAD1-4F0D-8D27-3053BE820406}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F94A29E0-FAD1-4F0D-8D27-3053BE820406}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F94A29E0-FAD1-4F0D-8D27-3053BE820406}.Release|Any CPU.Build.0 = Release|Any CPU
+		{805C269D-4AED-4285-84FD-FCFD6A6459E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{805C269D-4AED-4285-84FD-FCFD6A6459E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{805C269D-4AED-4285-84FD-FCFD6A6459E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{805C269D-4AED-4285-84FD-FCFD6A6459E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E00D8DF2-B8D1-4B3F-9E87-440107D1339B} = {CD3814F0-0F0F-42CD-A504-E1DC52FA59AF}
+		{26577877-335F-4634-B995-180DB8436C97} = {B3A811DC-EAF6-4593-8853-BE769617961C}
+		{F7668439-C2DC-41D1-B4C4-15500C15A085} = {13AF782A-993D-4924-9FF9-92417DA72DB1}
+		{F8EDC3BE-29AE-4048-B453-BF7E7B38679A} = {6BB4D1EA-1E96-4DC0-BA16-5F1C4D99261D}
+		{5BC78B54-5F45-44B1-B10B-D9EA705F5829} = {8EC527D0-2932-48CC-9FCA-09856ABAE2A3}
+		{68FC9AFB-2B4C-416A-B497-4F0AE0D04C68} = {5BC78B54-5F45-44B1-B10B-D9EA705F5829}
+		{F1056F72-52F2-4174-A3E2-B8C083EFD499} = {5BC78B54-5F45-44B1-B10B-D9EA705F5829}
+		{CD3814F0-0F0F-42CD-A504-E1DC52FA59AF} = {4FBDB06B-4EF3-4BFC-834C-58220A27843D}
+		{8EC527D0-2932-48CC-9FCA-09856ABAE2A3} = {B53FE1DD-A9B8-49D6-9E34-9E2B44034A18}
+		{B3A811DC-EAF6-4593-8853-BE769617961C} = {E00D8DF2-B8D1-4B3F-9E87-440107D1339B}
+		{13AF782A-993D-4924-9FF9-92417DA72DB1} = {E00D8DF2-B8D1-4B3F-9E87-440107D1339B}
+		{120A977A-74C0-44C9-A2AB-128F65E78D35} = {B3A811DC-EAF6-4593-8853-BE769617961C}
+		{29C8E23B-97F3-4EFB-84B2-25AF47DDEC51} = {B3A811DC-EAF6-4593-8853-BE769617961C}
+		{C657CCA3-4B6F-4F93-B11D-CFB96C0E57B3} = {B3A811DC-EAF6-4593-8853-BE769617961C}
+		{C2049032-B199-4803-BB23-47BB81D14FCC} = {B3A811DC-EAF6-4593-8853-BE769617961C}
+		{56FEAD30-D20D-4D99-B412-6D4790E80309} = {B3A811DC-EAF6-4593-8853-BE769617961C}
+		{3994AEAF-6621-4EB7-85ED-0411F1DFF169} = {13AF782A-993D-4924-9FF9-92417DA72DB1}
+		{A58E7196-7CE8-4294-B63B-483E808DE58A} = {13AF782A-993D-4924-9FF9-92417DA72DB1}
+		{EE580EB5-C315-4338-89E2-C3ED96CEE031} = {13AF782A-993D-4924-9FF9-92417DA72DB1}
+		{F94A29E0-FAD1-4F0D-8D27-3053BE820406} = {13AF782A-993D-4924-9FF9-92417DA72DB1}
+		{805C269D-4AED-4285-84FD-FCFD6A6459E3} = {13AF782A-993D-4924-9FF9-92417DA72DB1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5F7EF1F1-69C6-4C1A-8EDD-B3BB651CDFB4}
+	EndGlobalSection
+EndGlobal
