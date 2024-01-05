@@ -61,11 +61,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Spirzza", "Spirzza", "{CD38
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Spirzza", "Spirzza", "{8EC527D0-2932-48CC-9FCA-09856ABAE2A3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ios", "ios", "{C78018CD-3EBE-4A48-A000-E88FEA5CF34B}"
-	ProjectSection(SolutionItems) = preProject
-		ios\ios.toolchain.cmake = ios\ios.toolchain.cmake
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shaderc", "Shaderc", "{B3A811DC-EAF6-4593-8853-BE769617961C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SpirvCross", "SpirvCross", "{13AF782A-993D-4924-9FF9-92417DA72DB1}"
@@ -89,6 +84,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.Interop.SpirvCross.Win32", "sources\Spirzza\Interop\SpirvCross\Spirzza.Interop.SpirvCross.Win32.csproj", "{F94A29E0-FAD1-4F0D-8D27-3053BE820406}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.Interop.SpirvCross.macOS", "sources\Spirzza\Interop\SpirvCross\Spirzza.Interop.SpirvCross.macOS.csproj", "{805C269D-4AED-4285-84FD-FCFD6A6459E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "toolchains", "toolchains", "{C47F9D87-F2F2-4888-AF8E-AE67C1D64911}"
+	ProjectSection(SolutionItems) = preProject
+		toolchains\aarch64-linux-gnu.toolchain.cmake = toolchains\aarch64-linux-gnu.toolchain.cmake
+		toolchains\ios.toolchain.cmake = toolchains\ios.toolchain.cmake
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
