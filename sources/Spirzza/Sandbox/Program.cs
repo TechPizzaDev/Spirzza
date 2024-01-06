@@ -11,58 +11,8 @@ namespace Spirzza.Sandbox;
 
 using static spvc_basetype;
 
-public static unsafe class Program
+public static unsafe partial class Program
 {
-    public class SpirvModule
-    {
-
-    }
-
-    public class ShadercCompiler : IDisposable
-    {
-        private shaderc_compiler* _compiler;
-
-        public bool IsDisposed { get; private set; }
-
-        public ShadercCompiler()
-        {
-            _compiler = shaderc_compiler_initialize();
-        }
-
-        //public SpirvModule CompileToSpirv(
-        //    SourceProvider sourceProvider,
-        //    string sourceFileName,
-        //    string entryPoint)
-        //{
-        //}
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!IsDisposed)
-            {
-                if (disposing)
-                {
-                }
-
-                shaderc_compiler_release(_compiler);
-                _compiler = null;
-
-                IsDisposed = true;
-            }
-        }
-
-        public void Dispose()
-        {
-            Dispose(disposing: true);
-            GC.SuppressFinalize(this);
-        }
-
-        ~ShadercCompiler()
-        {
-            Dispose(disposing: false);
-        }
-    }
-
     public static void Main(string[] args)
     {
         string fileName = "shaders/iching-03.frag";
@@ -88,9 +38,9 @@ public static unsafe class Program
                 watch.Restart();
                 string source = File.ReadAllText(fileName);
 
-                sbyte* sourceUtf8 = (sbyte*)Marshal.StringToHGlobalAnsi(source);
-                sbyte* fileNameUtf8 = (sbyte*)Marshal.StringToHGlobalAnsi(fileName);
-                sbyte* entryPointUtf8 = (sbyte*)Marshal.StringToHGlobalAnsi(entryPoint);
+                sbyte* sourceUtf8 = (sbyte*) Marshal.StringToHGlobalAnsi(source);
+                sbyte* fileNameUtf8 = (sbyte*) Marshal.StringToHGlobalAnsi(fileName);
+                sbyte* entryPointUtf8 = (sbyte*) Marshal.StringToHGlobalAnsi(entryPoint);
                 watch.Stop();
                 PrintTime("ReadAllText: ", watch);
 
@@ -98,7 +48,7 @@ public static unsafe class Program
                 shaderc_compilation_result* result = shaderc_compile_into_spv(
                     compiler,
                     sourceUtf8,
-                    (nuint)MemoryMarshal.CreateReadOnlySpanFromNullTerminated((byte*)sourceUtf8).Length,
+                    (nuint) MemoryMarshal.CreateReadOnlySpanFromNullTerminated((byte*) sourceUtf8).Length,
                     shaderc_shader_kind.shaderc_fragment_shader,
                     fileNameUtf8,
                     entryPointUtf8,
@@ -106,17 +56,17 @@ public static unsafe class Program
                 watch.Stop();
                 PrintTime("shaderc_compile_into_spv: ", watch);
 
-                Marshal.FreeHGlobal((IntPtr)sourceUtf8);
-                Marshal.FreeHGlobal((IntPtr)fileNameUtf8);
-                Marshal.FreeHGlobal((IntPtr)entryPointUtf8);
+                Marshal.FreeHGlobal((IntPtr) sourceUtf8);
+                Marshal.FreeHGlobal((IntPtr) fileNameUtf8);
+                Marshal.FreeHGlobal((IntPtr) entryPointUtf8);
 
                 watch.Restart();
                 Console.Write(shaderc_result_get_compilation_status(result) + " -> ");
-                Console.WriteLine('"' + Marshal.PtrToStringUTF8((IntPtr)shaderc_result_get_error_message(result)) + '"');
+                Console.WriteLine('"' + Marshal.PtrToStringUTF8((IntPtr) shaderc_result_get_error_message(result)) + '"');
 
                 Span<byte> resultBytes = new(
                     shaderc_result_get_bytes(result),
-                    (int)shaderc_result_get_length(result));
+                    (int) shaderc_result_get_length(result));
 
                 File.WriteAllBytes(resultName, resultBytes.ToArray());
                 shaderc_result_release(result);
@@ -151,7 +101,7 @@ public static unsafe class Program
                 fixed (byte* spvSourcePtr = spvSource)
                 {
                     parseResult = spvc_context_parse_spirv(
-                        context, (SpvId*)spvSourcePtr, (nuint)spvSource.Length / (nuint)sizeof(SpvId), &parsedIr);
+                        context, (SpvId*) spvSourcePtr, (nuint) spvSource.Length / (nuint) sizeof(SpvId), &parsedIr);
                 }
                 watch.Stop();
                 PrintTime($"spvc_context_parse_spirv -> {parseResult}: ", watch);
@@ -167,7 +117,7 @@ public static unsafe class Program
                 watch.Stop();
 
                 watch.Restart();
-                ReadOnlySpan<byte> compiledBytes = MemoryMarshal.CreateReadOnlySpanFromNullTerminated((byte*)compiledSource);
+                ReadOnlySpan<byte> compiledBytes = MemoryMarshal.CreateReadOnlySpanFromNullTerminated((byte*) compiledSource);
 
                 File.WriteAllBytes(compiledName, compiledBytes.ToArray());
                 PrintTime("WriteAllBytes: ", watch);

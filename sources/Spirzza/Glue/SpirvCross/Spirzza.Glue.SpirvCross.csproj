@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="../../GlueProject.props" />
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\Interop\SpirvCross\Spirzza.Interop.SpirvCross.csproj" />
+    </ItemGroup>
+
+</Project>

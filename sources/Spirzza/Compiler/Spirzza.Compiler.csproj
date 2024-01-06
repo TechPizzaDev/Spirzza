@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <Import Project="../LibraryProject.props"/>
+    <Import Project="../GlueProject.props" />
 
     <ItemGroup>
-        <ProjectReference Include="..\Interop\Shaderc\Spirzza.Interop.Shaderc.csproj" />
-        <ProjectReference Include="..\Interop\SpirvCross\Spirzza.Interop.SpirvCross.csproj" />
+        <ProjectReference Include="..\Glue\Shaderc\Spirzza.Glue.Shaderc.csproj" />
+        <ProjectReference Include="..\Glue\SpirvCross\Spirzza.Glue.SpirvCross.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="../../GlueProject.props" />
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\Interop\Shaderc\Spirzza.Interop.Shaderc.csproj" />
+    </ItemGroup>
+
+</Project>
