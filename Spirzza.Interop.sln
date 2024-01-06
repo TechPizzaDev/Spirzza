@@ -58,6 +58,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.Interop.SpirvCross.Tests", "tests\Spirzza\Interop\SpirvCross\Spirzza.Interop.SpirvCross.Tests.csproj", "{F1056F72-52F2-4174-A3E2-B8C083EFD499}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Spirzza", "Spirzza", "{CD3814F0-0F0F-42CD-A504-E1DC52FA59AF}"
+	ProjectSection(SolutionItems) = preProject
+		sources\Spirzza\LibraryProject.props = sources\Spirzza\LibraryProject.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Spirzza", "Spirzza", "{8EC527D0-2932-48CC-9FCA-09856ABAE2A3}"
 EndProject
@@ -90,6 +93,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "toolchains", "toolchains", 
 		toolchains\aarch64-linux-gnu.toolchain.cmake = toolchains\aarch64-linux-gnu.toolchain.cmake
 		toolchains\ios.toolchain.cmake = toolchains\ios.toolchain.cmake
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.Compiler", "sources\Spirzza\Compiler\Spirzza.Compiler.csproj", "{C5A2F9C6-4476-46F8-959D-8390A922271B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spirzza.Sandbox", "sources\Spirzza\Sandbox\Spirzza.Sandbox.csproj", "{2B7299BD-E2CC-45E8-9309-0CCC9714E125}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -153,6 +160,14 @@ Global
 		{805C269D-4AED-4285-84FD-FCFD6A6459E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{805C269D-4AED-4285-84FD-FCFD6A6459E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{805C269D-4AED-4285-84FD-FCFD6A6459E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5A2F9C6-4476-46F8-959D-8390A922271B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5A2F9C6-4476-46F8-959D-8390A922271B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5A2F9C6-4476-46F8-959D-8390A922271B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5A2F9C6-4476-46F8-959D-8390A922271B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B7299BD-E2CC-45E8-9309-0CCC9714E125}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B7299BD-E2CC-45E8-9309-0CCC9714E125}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B7299BD-E2CC-45E8-9309-0CCC9714E125}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B7299BD-E2CC-45E8-9309-0CCC9714E125}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -179,6 +194,8 @@ Global
 		{EE580EB5-C315-4338-89E2-C3ED96CEE031} = {13AF782A-993D-4924-9FF9-92417DA72DB1}
 		{F94A29E0-FAD1-4F0D-8D27-3053BE820406} = {13AF782A-993D-4924-9FF9-92417DA72DB1}
 		{805C269D-4AED-4285-84FD-FCFD6A6459E3} = {13AF782A-993D-4924-9FF9-92417DA72DB1}
+		{C5A2F9C6-4476-46F8-959D-8390A922271B} = {CD3814F0-0F0F-42CD-A504-E1DC52FA59AF}
+		{2B7299BD-E2CC-45E8-9309-0CCC9714E125} = {CD3814F0-0F0F-42CD-A504-E1DC52FA59AF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5F7EF1F1-69C6-4C1A-8EDD-B3BB651CDFB4}

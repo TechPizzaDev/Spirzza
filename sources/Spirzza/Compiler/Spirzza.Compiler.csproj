@@ -1,14 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+    <Import Project="../LibraryProject.props"/>
 
-  <ItemGroup>
-    <PackageReference Include="Spirzza.Interop.Shaderc" Version="0.0.1" />
-    <PackageReference Include="Spirzza.Interop.SpirvCross" Version="0.0.1" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Interop\Shaderc\Spirzza.Interop.Shaderc.csproj" />
+        <ProjectReference Include="..\Interop\SpirvCross\Spirzza.Interop.SpirvCross.csproj" />
+    </ItemGroup>
 
 </Project>

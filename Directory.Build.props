@@ -43,7 +43,7 @@
         <Product>Spirzza</Product>
         <RootNamespace>Spirzza</RootNamespace>
         <VersionPrefix>0.0.1</VersionPrefix>
-        <VersionSuffix Condition="'$(EXCLUDE_SUFFIX_FROM_VERSION)' != 'true'"></VersionSuffix>
+        <VersionSuffix Condition="'$(EXCLUDE_SUFFIX_FROM_VERSION)' != 'true'">beta</VersionSuffix>
         <VersionSuffix Condition="'$(GITHUB_EVENT_NAME)' == 'pull_request'">pr</VersionSuffix>
     </PropertyGroup>
 
