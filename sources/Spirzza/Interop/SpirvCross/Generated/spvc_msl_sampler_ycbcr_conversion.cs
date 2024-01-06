@@ -46,7 +46,9 @@ namespace Spirzza.Interop.SpirvCross
                         case 1: return ref e1;
                         case 2: return ref e2;
                         case 3: return ref e3;
-                        default: throw new IndexOutOfRangeException();
+                        default: 
+                            ThrowHelper.ThrowIndexOutOfRangeException();
+                            return ref e0;
                     }
                 }
             }
