@@ -1,12 +1,23 @@
-namespace Spirzza.Interop.SpirvCross
+namespace Spirzza.Interop.SpirvCross;
+
+/// <include file='SpvMemoryModel.xml' path='doc/member[@name="SpvMemoryModel"]/*' />
+public enum SpvMemoryModel
 {
-    public enum SpvMemoryModel
-    {
-        SpvMemoryModelSimple = 0,
-        SpvMemoryModelGLSL450 = 1,
-        SpvMemoryModelOpenCL = 2,
-        SpvMemoryModelVulkan = 3,
-        SpvMemoryModelVulkanKHR = 3,
-        SpvMemoryModelMax = 0x7fffffff,
-    }
+    /// <include file='SpvMemoryModel.xml' path='doc/member[@name="SpvMemoryModel.SpvMemoryModelSimple"]/*' />
+    SpvMemoryModelSimple = 0,
+
+    /// <include file='SpvMemoryModel.xml' path='doc/member[@name="SpvMemoryModel.SpvMemoryModelGLSL450"]/*' />
+    SpvMemoryModelGLSL450 = 1,
+
+    /// <include file='SpvMemoryModel.xml' path='doc/member[@name="SpvMemoryModel.SpvMemoryModelOpenCL"]/*' />
+    SpvMemoryModelOpenCL = 2,
+
+    /// <include file='SpvMemoryModel.xml' path='doc/member[@name="SpvMemoryModel.SpvMemoryModelVulkan"]/*' />
+    SpvMemoryModelVulkan = 3,
+
+    /// <include file='SpvMemoryModel.xml' path='doc/member[@name="SpvMemoryModel.SpvMemoryModelVulkanKHR"]/*' />
+    SpvMemoryModelVulkanKHR = 3,
+
+    /// <include file='SpvMemoryModel.xml' path='doc/member[@name="SpvMemoryModel.SpvMemoryModelMax"]/*' />
+    SpvMemoryModelMax = 0x7fffffff,
 }

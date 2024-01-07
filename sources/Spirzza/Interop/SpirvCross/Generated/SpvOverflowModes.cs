@@ -1,11 +1,20 @@
-namespace Spirzza.Interop.SpirvCross
+namespace Spirzza.Interop.SpirvCross;
+
+/// <include file='SpvOverflowModes.xml' path='doc/member[@name="SpvOverflowModes"]/*' />
+public enum SpvOverflowModes
 {
-    public enum SpvOverflowModes
-    {
-        SpvOverflowModesWRAP = 0,
-        SpvOverflowModesSAT = 1,
-        SpvOverflowModesSAT_ZERO = 2,
-        SpvOverflowModesSAT_SYM = 3,
-        SpvOverflowModesMax = 0x7fffffff,
-    }
+    /// <include file='SpvOverflowModes.xml' path='doc/member[@name="SpvOverflowModes.SpvOverflowModesWRAP"]/*' />
+    SpvOverflowModesWRAP = 0,
+
+    /// <include file='SpvOverflowModes.xml' path='doc/member[@name="SpvOverflowModes.SpvOverflowModesSAT"]/*' />
+    SpvOverflowModesSAT = 1,
+
+    /// <include file='SpvOverflowModes.xml' path='doc/member[@name="SpvOverflowModes.SpvOverflowModesSAT_ZERO"]/*' />
+    SpvOverflowModesSAT_ZERO = 2,
+
+    /// <include file='SpvOverflowModes.xml' path='doc/member[@name="SpvOverflowModes.SpvOverflowModesSAT_SYM"]/*' />
+    SpvOverflowModesSAT_SYM = 3,
+
+    /// <include file='SpvOverflowModes.xml' path='doc/member[@name="SpvOverflowModes.SpvOverflowModesMax"]/*' />
+    SpvOverflowModesMax = 0x7fffffff,
 }

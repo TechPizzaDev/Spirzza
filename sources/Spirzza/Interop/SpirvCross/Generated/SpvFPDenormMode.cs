@@ -1,9 +1,14 @@
-namespace Spirzza.Interop.SpirvCross
+namespace Spirzza.Interop.SpirvCross;
+
+/// <include file='SpvFPDenormMode.xml' path='doc/member[@name="SpvFPDenormMode"]/*' />
+public enum SpvFPDenormMode
 {
-    public enum SpvFPDenormMode
-    {
-        SpvFPDenormModePreserve = 0,
-        SpvFPDenormModeFlushToZero = 1,
-        SpvFPDenormModeMax = 0x7fffffff,
-    }
+    /// <include file='SpvFPDenormMode.xml' path='doc/member[@name="SpvFPDenormMode.SpvFPDenormModePreserve"]/*' />
+    SpvFPDenormModePreserve = 0,
+
+    /// <include file='SpvFPDenormMode.xml' path='doc/member[@name="SpvFPDenormMode.SpvFPDenormModeFlushToZero"]/*' />
+    SpvFPDenormModeFlushToZero = 1,
+
+    /// <include file='SpvFPDenormMode.xml' path='doc/member[@name="SpvFPDenormMode.SpvFPDenormModeMax"]/*' />
+    SpvFPDenormModeMax = 0x7fffffff,
 }

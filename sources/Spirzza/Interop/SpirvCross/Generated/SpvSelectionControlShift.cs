@@ -1,9 +1,14 @@
-namespace Spirzza.Interop.SpirvCross
+namespace Spirzza.Interop.SpirvCross;
+
+/// <include file='SpvSelectionControlShift.xml' path='doc/member[@name="SpvSelectionControlShift"]/*' />
+public enum SpvSelectionControlShift
 {
-    public enum SpvSelectionControlShift
-    {
-        SpvSelectionControlFlattenShift = 0,
-        SpvSelectionControlDontFlattenShift = 1,
-        SpvSelectionControlMax = 0x7fffffff,
-    }
+    /// <include file='SpvSelectionControlShift.xml' path='doc/member[@name="SpvSelectionControlShift.SpvSelectionControlFlattenShift"]/*' />
+    SpvSelectionControlFlattenShift = 0,
+
+    /// <include file='SpvSelectionControlShift.xml' path='doc/member[@name="SpvSelectionControlShift.SpvSelectionControlDontFlattenShift"]/*' />
+    SpvSelectionControlDontFlattenShift = 1,
+
+    /// <include file='SpvSelectionControlShift.xml' path='doc/member[@name="SpvSelectionControlShift.SpvSelectionControlMax"]/*' />
+    SpvSelectionControlMax = 0x7fffffff,
 }

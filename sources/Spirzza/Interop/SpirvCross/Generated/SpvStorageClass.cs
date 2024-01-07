@@ -1,37 +1,101 @@
-namespace Spirzza.Interop.SpirvCross
+namespace Spirzza.Interop.SpirvCross;
+
+/// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass"]/*' />
+public enum SpvStorageClass
 {
-    public enum SpvStorageClass
-    {
-        SpvStorageClassUniformConstant = 0,
-        SpvStorageClassInput = 1,
-        SpvStorageClassUniform = 2,
-        SpvStorageClassOutput = 3,
-        SpvStorageClassWorkgroup = 4,
-        SpvStorageClassCrossWorkgroup = 5,
-        SpvStorageClassPrivate = 6,
-        SpvStorageClassFunction = 7,
-        SpvStorageClassGeneric = 8,
-        SpvStorageClassPushConstant = 9,
-        SpvStorageClassAtomicCounter = 10,
-        SpvStorageClassImage = 11,
-        SpvStorageClassStorageBuffer = 12,
-        SpvStorageClassCallableDataKHR = 5328,
-        SpvStorageClassCallableDataNV = 5328,
-        SpvStorageClassIncomingCallableDataKHR = 5329,
-        SpvStorageClassIncomingCallableDataNV = 5329,
-        SpvStorageClassRayPayloadKHR = 5338,
-        SpvStorageClassRayPayloadNV = 5338,
-        SpvStorageClassHitAttributeKHR = 5339,
-        SpvStorageClassHitAttributeNV = 5339,
-        SpvStorageClassIncomingRayPayloadKHR = 5342,
-        SpvStorageClassIncomingRayPayloadNV = 5342,
-        SpvStorageClassShaderRecordBufferKHR = 5343,
-        SpvStorageClassShaderRecordBufferNV = 5343,
-        SpvStorageClassPhysicalStorageBuffer = 5349,
-        SpvStorageClassPhysicalStorageBufferEXT = 5349,
-        SpvStorageClassCodeSectionINTEL = 5605,
-        SpvStorageClassDeviceOnlyINTEL = 5936,
-        SpvStorageClassHostOnlyINTEL = 5937,
-        SpvStorageClassMax = 0x7fffffff,
-    }
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassUniformConstant"]/*' />
+    SpvStorageClassUniformConstant = 0,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassInput"]/*' />
+    SpvStorageClassInput = 1,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassUniform"]/*' />
+    SpvStorageClassUniform = 2,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassOutput"]/*' />
+    SpvStorageClassOutput = 3,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassWorkgroup"]/*' />
+    SpvStorageClassWorkgroup = 4,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassCrossWorkgroup"]/*' />
+    SpvStorageClassCrossWorkgroup = 5,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassPrivate"]/*' />
+    SpvStorageClassPrivate = 6,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassFunction"]/*' />
+    SpvStorageClassFunction = 7,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassGeneric"]/*' />
+    SpvStorageClassGeneric = 8,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassPushConstant"]/*' />
+    SpvStorageClassPushConstant = 9,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassAtomicCounter"]/*' />
+    SpvStorageClassAtomicCounter = 10,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassImage"]/*' />
+    SpvStorageClassImage = 11,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassStorageBuffer"]/*' />
+    SpvStorageClassStorageBuffer = 12,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassCallableDataKHR"]/*' />
+    SpvStorageClassCallableDataKHR = 5328,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassCallableDataNV"]/*' />
+    SpvStorageClassCallableDataNV = 5328,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassIncomingCallableDataKHR"]/*' />
+    SpvStorageClassIncomingCallableDataKHR = 5329,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassIncomingCallableDataNV"]/*' />
+    SpvStorageClassIncomingCallableDataNV = 5329,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassRayPayloadKHR"]/*' />
+    SpvStorageClassRayPayloadKHR = 5338,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassRayPayloadNV"]/*' />
+    SpvStorageClassRayPayloadNV = 5338,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassHitAttributeKHR"]/*' />
+    SpvStorageClassHitAttributeKHR = 5339,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassHitAttributeNV"]/*' />
+    SpvStorageClassHitAttributeNV = 5339,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassIncomingRayPayloadKHR"]/*' />
+    SpvStorageClassIncomingRayPayloadKHR = 5342,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassIncomingRayPayloadNV"]/*' />
+    SpvStorageClassIncomingRayPayloadNV = 5342,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassShaderRecordBufferKHR"]/*' />
+    SpvStorageClassShaderRecordBufferKHR = 5343,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassShaderRecordBufferNV"]/*' />
+    SpvStorageClassShaderRecordBufferNV = 5343,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassPhysicalStorageBuffer"]/*' />
+    SpvStorageClassPhysicalStorageBuffer = 5349,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassPhysicalStorageBufferEXT"]/*' />
+    SpvStorageClassPhysicalStorageBufferEXT = 5349,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassTaskPayloadWorkgroupEXT"]/*' />
+    SpvStorageClassTaskPayloadWorkgroupEXT = 5402,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassCodeSectionINTEL"]/*' />
+    SpvStorageClassCodeSectionINTEL = 5605,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassDeviceOnlyINTEL"]/*' />
+    SpvStorageClassDeviceOnlyINTEL = 5936,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassHostOnlyINTEL"]/*' />
+    SpvStorageClassHostOnlyINTEL = 5937,
+
+    /// <include file='SpvStorageClass.xml' path='doc/member[@name="SpvStorageClass.SpvStorageClassMax"]/*' />
+    SpvStorageClassMax = 0x7fffffff,
 }

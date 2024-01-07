@@ -1,12 +1,23 @@
-namespace Spirzza.Interop.SpirvCross
+namespace Spirzza.Interop.SpirvCross;
+
+/// <include file='SpvFunctionControlMask.xml' path='doc/member[@name="SpvFunctionControlMask"]/*' />
+public enum SpvFunctionControlMask
 {
-    public enum SpvFunctionControlMask
-    {
-        SpvFunctionControlMaskNone = 0,
-        SpvFunctionControlInlineMask = 0x00000001,
-        SpvFunctionControlDontInlineMask = 0x00000002,
-        SpvFunctionControlPureMask = 0x00000004,
-        SpvFunctionControlConstMask = 0x00000008,
-        SpvFunctionControlOptNoneINTELMask = 0x00010000,
-    }
+    /// <include file='SpvFunctionControlMask.xml' path='doc/member[@name="SpvFunctionControlMask.SpvFunctionControlMaskNone"]/*' />
+    SpvFunctionControlMaskNone = 0,
+
+    /// <include file='SpvFunctionControlMask.xml' path='doc/member[@name="SpvFunctionControlMask.SpvFunctionControlInlineMask"]/*' />
+    SpvFunctionControlInlineMask = 0x00000001,
+
+    /// <include file='SpvFunctionControlMask.xml' path='doc/member[@name="SpvFunctionControlMask.SpvFunctionControlDontInlineMask"]/*' />
+    SpvFunctionControlDontInlineMask = 0x00000002,
+
+    /// <include file='SpvFunctionControlMask.xml' path='doc/member[@name="SpvFunctionControlMask.SpvFunctionControlPureMask"]/*' />
+    SpvFunctionControlPureMask = 0x00000004,
+
+    /// <include file='SpvFunctionControlMask.xml' path='doc/member[@name="SpvFunctionControlMask.SpvFunctionControlConstMask"]/*' />
+    SpvFunctionControlConstMask = 0x00000008,
+
+    /// <include file='SpvFunctionControlMask.xml' path='doc/member[@name="SpvFunctionControlMask.SpvFunctionControlOptNoneINTELMask"]/*' />
+    SpvFunctionControlOptNoneINTELMask = 0x00010000,
 }

@@ -1,15 +1,32 @@
-namespace Spirzza.Interop.SpirvCross
+namespace Spirzza.Interop.SpirvCross;
+
+/// <include file='SpvScope.xml' path='doc/member[@name="SpvScope"]/*' />
+public enum SpvScope
 {
-    public enum SpvScope
-    {
-        SpvScopeCrossDevice = 0,
-        SpvScopeDevice = 1,
-        SpvScopeWorkgroup = 2,
-        SpvScopeSubgroup = 3,
-        SpvScopeInvocation = 4,
-        SpvScopeQueueFamily = 5,
-        SpvScopeQueueFamilyKHR = 5,
-        SpvScopeShaderCallKHR = 6,
-        SpvScopeMax = 0x7fffffff,
-    }
+    /// <include file='SpvScope.xml' path='doc/member[@name="SpvScope.SpvScopeCrossDevice"]/*' />
+    SpvScopeCrossDevice = 0,
+
+    /// <include file='SpvScope.xml' path='doc/member[@name="SpvScope.SpvScopeDevice"]/*' />
+    SpvScopeDevice = 1,
+
+    /// <include file='SpvScope.xml' path='doc/member[@name="SpvScope.SpvScopeWorkgroup"]/*' />
+    SpvScopeWorkgroup = 2,
+
+    /// <include file='SpvScope.xml' path='doc/member[@name="SpvScope.SpvScopeSubgroup"]/*' />
+    SpvScopeSubgroup = 3,
+
+    /// <include file='SpvScope.xml' path='doc/member[@name="SpvScope.SpvScopeInvocation"]/*' />
+    SpvScopeInvocation = 4,
+
+    /// <include file='SpvScope.xml' path='doc/member[@name="SpvScope.SpvScopeQueueFamily"]/*' />
+    SpvScopeQueueFamily = 5,
+
+    /// <include file='SpvScope.xml' path='doc/member[@name="SpvScope.SpvScopeQueueFamilyKHR"]/*' />
+    SpvScopeQueueFamilyKHR = 5,
+
+    /// <include file='SpvScope.xml' path='doc/member[@name="SpvScope.SpvScopeShaderCallKHR"]/*' />
+    SpvScopeShaderCallKHR = 6,
+
+    /// <include file='SpvScope.xml' path='doc/member[@name="SpvScope.SpvScopeMax"]/*' />
+    SpvScopeMax = 0x7fffffff,
 }

@@ -1,10 +1,17 @@
-namespace Spirzza.Interop.SpirvCross
+namespace Spirzza.Interop.SpirvCross;
+
+/// <include file='SpvRayQueryCommittedIntersectionType.xml' path='doc/member[@name="SpvRayQueryCommittedIntersectionType"]/*' />
+public enum SpvRayQueryCommittedIntersectionType
 {
-    public enum SpvRayQueryCommittedIntersectionType
-    {
-        SpvRayQueryCommittedIntersectionTypeRayQueryCommittedIntersectionNoneKHR = 0,
-        SpvRayQueryCommittedIntersectionTypeRayQueryCommittedIntersectionTriangleKHR = 1,
-        SpvRayQueryCommittedIntersectionTypeRayQueryCommittedIntersectionGeneratedKHR = 2,
-        SpvRayQueryCommittedIntersectionTypeMax = 0x7fffffff,
-    }
+    /// <include file='SpvRayQueryCommittedIntersectionType.xml' path='doc/member[@name="SpvRayQueryCommittedIntersectionType.SpvRayQueryCommittedIntersectionTypeRayQueryCommittedIntersectionNoneKHR"]/*' />
+    SpvRayQueryCommittedIntersectionTypeRayQueryCommittedIntersectionNoneKHR = 0,
+
+    /// <include file='SpvRayQueryCommittedIntersectionType.xml' path='doc/member[@name="SpvRayQueryCommittedIntersectionType.SpvRayQueryCommittedIntersectionTypeRayQueryCommittedIntersectionTriangleKHR"]/*' />
+    SpvRayQueryCommittedIntersectionTypeRayQueryCommittedIntersectionTriangleKHR = 1,
+
+    /// <include file='SpvRayQueryCommittedIntersectionType.xml' path='doc/member[@name="SpvRayQueryCommittedIntersectionType.SpvRayQueryCommittedIntersectionTypeRayQueryCommittedIntersectionGeneratedKHR"]/*' />
+    SpvRayQueryCommittedIntersectionTypeRayQueryCommittedIntersectionGeneratedKHR = 2,
+
+    /// <include file='SpvRayQueryCommittedIntersectionType.xml' path='doc/member[@name="SpvRayQueryCommittedIntersectionType.SpvRayQueryCommittedIntersectionTypeMax"]/*' />
+    SpvRayQueryCommittedIntersectionTypeMax = 0x7fffffff,
 }

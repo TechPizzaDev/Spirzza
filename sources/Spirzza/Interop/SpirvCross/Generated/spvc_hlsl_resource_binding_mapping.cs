@@ -1,11 +1,13 @@
-namespace Spirzza.Interop.SpirvCross
-{
-    public partial struct spvc_hlsl_resource_binding_mapping
-    {
-        [NativeTypeName("unsigned int")]
-        public uint register_space;
+namespace Spirzza.Interop.SpirvCross;
 
-        [NativeTypeName("unsigned int")]
-        public uint register_binding;
-    }
+/// <include file='spvc_hlsl_resource_binding_mapping.xml' path='doc/member[@name="spvc_hlsl_resource_binding_mapping"]/*' />
+public partial struct spvc_hlsl_resource_binding_mapping
+{
+    /// <include file='spvc_hlsl_resource_binding_mapping.xml' path='doc/member[@name="spvc_hlsl_resource_binding_mapping.register_space"]/*' />
+    [NativeTypeName("unsigned int")]
+    public uint register_space;
+
+    /// <include file='spvc_hlsl_resource_binding_mapping.xml' path='doc/member[@name="spvc_hlsl_resource_binding_mapping.register_binding"]/*' />
+    [NativeTypeName("unsigned int")]
+    public uint register_binding;
 }

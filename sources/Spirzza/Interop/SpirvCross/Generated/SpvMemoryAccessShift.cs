@@ -1,16 +1,41 @@
-namespace Spirzza.Interop.SpirvCross
+namespace Spirzza.Interop.SpirvCross;
+
+/// <include file='SpvMemoryAccessShift.xml' path='doc/member[@name="SpvMemoryAccessShift"]/*' />
+public enum SpvMemoryAccessShift
 {
-    public enum SpvMemoryAccessShift
-    {
-        SpvMemoryAccessVolatileShift = 0,
-        SpvMemoryAccessAlignedShift = 1,
-        SpvMemoryAccessNontemporalShift = 2,
-        SpvMemoryAccessMakePointerAvailableShift = 3,
-        SpvMemoryAccessMakePointerAvailableKHRShift = 3,
-        SpvMemoryAccessMakePointerVisibleShift = 4,
-        SpvMemoryAccessMakePointerVisibleKHRShift = 4,
-        SpvMemoryAccessNonPrivatePointerShift = 5,
-        SpvMemoryAccessNonPrivatePointerKHRShift = 5,
-        SpvMemoryAccessMax = 0x7fffffff,
-    }
+    /// <include file='SpvMemoryAccessShift.xml' path='doc/member[@name="SpvMemoryAccessShift.SpvMemoryAccessVolatileShift"]/*' />
+    SpvMemoryAccessVolatileShift = 0,
+
+    /// <include file='SpvMemoryAccessShift.xml' path='doc/member[@name="SpvMemoryAccessShift.SpvMemoryAccessAlignedShift"]/*' />
+    SpvMemoryAccessAlignedShift = 1,
+
+    /// <include file='SpvMemoryAccessShift.xml' path='doc/member[@name="SpvMemoryAccessShift.SpvMemoryAccessNontemporalShift"]/*' />
+    SpvMemoryAccessNontemporalShift = 2,
+
+    /// <include file='SpvMemoryAccessShift.xml' path='doc/member[@name="SpvMemoryAccessShift.SpvMemoryAccessMakePointerAvailableShift"]/*' />
+    SpvMemoryAccessMakePointerAvailableShift = 3,
+
+    /// <include file='SpvMemoryAccessShift.xml' path='doc/member[@name="SpvMemoryAccessShift.SpvMemoryAccessMakePointerAvailableKHRShift"]/*' />
+    SpvMemoryAccessMakePointerAvailableKHRShift = 3,
+
+    /// <include file='SpvMemoryAccessShift.xml' path='doc/member[@name="SpvMemoryAccessShift.SpvMemoryAccessMakePointerVisibleShift"]/*' />
+    SpvMemoryAccessMakePointerVisibleShift = 4,
+
+    /// <include file='SpvMemoryAccessShift.xml' path='doc/member[@name="SpvMemoryAccessShift.SpvMemoryAccessMakePointerVisibleKHRShift"]/*' />
+    SpvMemoryAccessMakePointerVisibleKHRShift = 4,
+
+    /// <include file='SpvMemoryAccessShift.xml' path='doc/member[@name="SpvMemoryAccessShift.SpvMemoryAccessNonPrivatePointerShift"]/*' />
+    SpvMemoryAccessNonPrivatePointerShift = 5,
+
+    /// <include file='SpvMemoryAccessShift.xml' path='doc/member[@name="SpvMemoryAccessShift.SpvMemoryAccessNonPrivatePointerKHRShift"]/*' />
+    SpvMemoryAccessNonPrivatePointerKHRShift = 5,
+
+    /// <include file='SpvMemoryAccessShift.xml' path='doc/member[@name="SpvMemoryAccessShift.SpvMemoryAccessAliasScopeINTELMaskShift"]/*' />
+    SpvMemoryAccessAliasScopeINTELMaskShift = 16,
+
+    /// <include file='SpvMemoryAccessShift.xml' path='doc/member[@name="SpvMemoryAccessShift.SpvMemoryAccessNoAliasINTELMaskShift"]/*' />
+    SpvMemoryAccessNoAliasINTELMaskShift = 17,
+
+    /// <include file='SpvMemoryAccessShift.xml' path='doc/member[@name="SpvMemoryAccessShift.SpvMemoryAccessMax"]/*' />
+    SpvMemoryAccessMax = 0x7fffffff,
 }
