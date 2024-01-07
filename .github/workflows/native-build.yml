@@ -87,14 +87,14 @@ jobs:
           - os: macos-latest
             build_target: ios-arm64
             args_spirv_cross: --ios OS64 --artifact-name build/SPIRV-Cross/Release-iphoneos/libspirv-cross_combined.a    --combined-static build/SPIRV-Cross/Release-iphoneos
-            args_shaderc:     --ios OS64 --artifact-name build/shaderc/libshaderc/Release-iphoneos/libshaderc_combined.a
+            args_shaderc:     --ios OS64 --artifact-name build/shaderc/libshaderc/Release-iphoneos/libshaderc_combined.a --combined-static build/SPIRV-Cross/Release-iphoneos
             cmake_args_spirv_cross: -DSPIRV_CROSS_STATIC=ON -DSPIRV_CROSS_SHARED=OFF -DSPIRV_CROSS_CLI=OFF
             cmake_args_shaderc:     -DCMAKE_POLICY_DEFAULT_CMP0006=OLD -DCMAKE_POLICY_DEFAULT_CMP0077=NEW -DENABLE_HLSL=ON -DENABLE_OPT=ON -DENABLE_GLSLANG_BINARIES=OFF -DSPIRV_SKIP_EXECUTABLES=ON -DSHADERC_SKIP_TESTS=ON -DSHADERC_SKIP_EXAMPLES=ON -DSHADERC_SKIP_INSTALL=ON
             
           - os: macos-latest
             build_target: iossimulator-x64
             args_spirv_cross: --ios SIMULATOR64 --artifact-name build/SPIRV-Cross/Release-iphonesimulator/libspirv-cross_combined.a    --combined-static build/SPIRV-Cross/Release-iphonesimulator
-            args_shaderc:     --ios SIMULATOR64 --artifact-name build/shaderc/libshaderc/Release-iphonesimulator/libshaderc_combined.a
+            args_shaderc:     --ios SIMULATOR64 --artifact-name build/shaderc/libshaderc/Release-iphonesimulator/libshaderc_combined.a --combined-static build/SPIRV-Cross/Release-iphonesimulator
             cmake_args_spirv_cross: -DSPIRV_CROSS_STATIC=ON -DSPIRV_CROSS_SHARED=OFF -DSPIRV_CROSS_CLI=OFF
             cmake_args_shaderc:     -DCMAKE_POLICY_DEFAULT_CMP0006=OLD -DCMAKE_POLICY_DEFAULT_CMP0077=NEW -DENABLE_HLSL=ON -DENABLE_OPT=ON -DENABLE_GLSLANG_BINARIES=OFF -DSPIRV_SKIP_EXECUTABLES=ON -DSHADERC_SKIP_TESTS=ON -DSHADERC_SKIP_EXAMPLES=ON -DSHADERC_SKIP_INSTALL=ON
 
@@ -144,7 +144,7 @@ jobs:
         shell: bash
         
       - name: List $RUNNER_WORKSPACE
-        if: ${{ vars.ACTIONS_STEP_DEBUG }}
+        if: always() && vars.ACTIONS_STEP_DEBUG
         run: find $RUNNER_WORKSPACE
         shell: bash
 
