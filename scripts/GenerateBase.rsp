@@ -1,9 +1,16 @@
 --config
 default-codegen
+generate-doc-includes
+generate-file-scoped-namespaces
 generate-macro-bindings
 generate-tests-nunit
 multi-file
 unix-types
 generate-helper-types
+generate-marker-interfaces
+generate-native-bitfield-attribute
+generate-native-inheritance-attribute
+generate-template-bindings  
+generate-unmanaged-constants
 log-potential-typedef-remappings
 log-visited-files
